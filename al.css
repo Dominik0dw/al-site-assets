@@ -80,7 +80,7 @@
 }
 
 /* =========================================================
-   RYCHLÉ TECDOC DÍLY – ZATÍM DESKTOP
+   RYCHLÉ TECDOC DÍLY – DESKTOP
    ========================================================= */
 
 #autolenc-quick-parts {
@@ -90,37 +90,39 @@
 @media (min-width: 1024px) {
   #autolenc-quick-parts {
     display: block;
-    margin: 18px 0 20px;
+    margin: 18px 0 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
   }
 
   #autolenc-quick-parts .autolenc-heading {
-    margin: 0 0 10px;
-    font: inherit;
-    font-size: 18px;
-    font-weight: 600;
+    margin: 0 0 14px;
+    color: #111 !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    line-height: 1.3 !important;
   }
 
   #autolenc-quick-parts .autolenc-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 213px);
-    gap: 10px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
   }
 
   #autolenc-quick-parts .autolenc-tile {
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    gap: 12px;
-    width: 213px;
-    height: 82px;
-    padding: 12px;
+    gap: 14px;
+    width: 100%;
+    min-height: 82px;
+    padding: 12px 14px;
     border: 1px solid #ddd;
     border-radius: 4px;
     background: #fff;
-    color: #222;
+    color: #222 !important;
     text-decoration: none !important;
-    font: inherit;
-    line-height: 1.25;
+    line-height: 1.25 !important;
   }
 
   #autolenc-quick-parts .autolenc-tile:hover {
@@ -141,7 +143,20 @@
   }
 
   #autolenc-quick-parts .autolenc-label {
-    min-width: 0;
-    font-weight: 600;
+    display: block !important;
+    color: #111 !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    line-height: 1.3 !important;
+    text-indent: 0 !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  #autolenc-quick-parts .autolenc-tile *,
+  #autolenc-quick-parts .autolenc-tile span {
+    color: #111 !important;
   }
 }
