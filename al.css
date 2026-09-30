@@ -1,1 +1,147 @@
-/* AutoLenc custom frontend */
+/* AutoLenc UX */
+
+/* =========================================================
+   IKONY HLAVNÍCH UNIVERZÁLNÍCH KATEGORIÍ
+   ========================================================= */
+
+.flex-universal-parts .categories .tree :is(
+  a[data-node-id="19058"],
+  a[data-node-id="19049"],
+  a[data-node-id="19050"],
+  a[data-node-id="19051"],
+  a[data-node-id="19052"],
+  a[data-node-id="19054"],
+  a[data-node-id="19055"],
+  a[data-node-id="19056"],
+  a[data-node-id="19057"],
+  a[data-node-id="19505"],
+  a[data-node-id="19322"]
+) > .name {
+  position: relative !important;
+  padding-left: 38px !important;
+}
+
+.flex-universal-parts .categories .tree :is(
+  a[data-node-id="19058"],
+  a[data-node-id="19049"],
+  a[data-node-id="19050"],
+  a[data-node-id="19051"],
+  a[data-node-id="19052"],
+  a[data-node-id="19054"],
+  a[data-node-id="19055"],
+  a[data-node-id="19056"],
+  a[data-node-id="19057"],
+  a[data-node-id="19505"],
+  a[data-node-id="19322"]
+) > .name::before {
+  content: "" !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 30px !important;
+  height: 30px !important;
+  background: var(--autolenc-category-image) center / contain no-repeat !important;
+  pointer-events: none !important;
+}
+
+.flex-universal-parts .categories .tree a[data-node-id="19058"] > .name {
+  --autolenc-category-image: url("https://eshop.auto-lenc.cz/Image.ashx?type=5&id=19058");
+}
+.flex-universal-parts .categories .tree a[data-node-id="19049"] > .name {
+  --autolenc-category-image: url("https://eshop.auto-lenc.cz/Image.ashx?type=5&id=19049");
+}
+.flex-universal-parts .categories .tree a[data-node-id="19050"] > .name {
+  --autolenc-category-image: url("https://eshop.auto-lenc.cz/Image.ashx?type=5&id=19050");
+}
+.flex-universal-parts .categories .tree a[data-node-id="19051"] > .name {
+  --autolenc-category-image: url("https://eshop.auto-lenc.cz/Image.ashx?type=5&id=19051");
+}
+.flex-universal-parts .categories .tree a[data-node-id="19052"] > .name {
+  --autolenc-category-image: url("https://eshop.auto-lenc.cz/Image.ashx?type=5&id=19052");
+}
+.flex-universal-parts .categories .tree a[data-node-id="19054"] > .name {
+  --autolenc-category-image: url("https://eshop.auto-lenc.cz/Image.ashx?type=5&id=19054");
+}
+.flex-universal-parts .categories .tree a[data-node-id="19055"] > .name {
+  --autolenc-category-image: url("https://eshop.auto-lenc.cz/Image.ashx?type=5&id=19055");
+}
+.flex-universal-parts .categories .tree a[data-node-id="19056"] > .name {
+  --autolenc-category-image: url("https://eshop.auto-lenc.cz/Image.ashx?type=5&id=19056");
+}
+.flex-universal-parts .categories .tree a[data-node-id="19057"] > .name {
+  --autolenc-category-image: url("https://eshop.auto-lenc.cz/Image.ashx?type=5&id=19057");
+}
+.flex-universal-parts .categories .tree a[data-node-id="19505"] > .name {
+  --autolenc-category-image: url("https://eshop.auto-lenc.cz/Image.ashx?type=5&id=19505");
+}
+.flex-universal-parts .categories .tree a[data-node-id="19322"] > .name {
+  --autolenc-category-image: url("https://eshop.auto-lenc.cz/Image.ashx?type=5&id=19322");
+}
+
+/* =========================================================
+   RYCHLÉ TECDOC DÍLY – ZATÍM DESKTOP
+   ========================================================= */
+
+#autolenc-quick-parts {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  #autolenc-quick-parts {
+    display: block;
+    margin: 18px 0 20px;
+  }
+
+  #autolenc-quick-parts .autolenc-heading {
+    margin: 0 0 10px;
+    font: inherit;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  #autolenc-quick-parts .autolenc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 213px);
+    gap: 10px;
+  }
+
+  #autolenc-quick-parts .autolenc-tile {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 213px;
+    height: 82px;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #fff;
+    color: #222;
+    text-decoration: none !important;
+    font: inherit;
+    line-height: 1.25;
+  }
+
+  #autolenc-quick-parts .autolenc-tile:hover {
+    border-color: #777;
+  }
+
+  #autolenc-quick-parts .autolenc-tile:focus-visible {
+    outline: 2px solid #245fa3;
+    outline-offset: 2px;
+  }
+
+  #autolenc-quick-parts .autolenc-image {
+    display: block;
+    flex: 0 0 50px;
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+  }
+
+  #autolenc-quick-parts .autolenc-label {
+    min-width: 0;
+    font-weight: 600;
+  }
+}
