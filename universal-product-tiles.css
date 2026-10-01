@@ -1,199 +1,32 @@
-/* =========================================================
-   Auto Lenc – Oleje a maziva
-   Podkategorie v PRODUKTOVÉM zobrazení jako původní dlaždice
+/* TEST – pouze produktové zobrazení univerzálních dílů */
 
-   Pouze CSS.
-   Nemění HTML, odkazy ani funkce Nextisu.
-   ========================================================= */
-
-
-/* Aktivuje se POUZE:
-   - v univerzálních dílech
-   - v produktovém režimu
-   - na kategorii Oleje a maziva (19058)
-*/
-.flex-universal-parts
-> .products
-> .flex-sub-categories:has(
-  + .products-list[data-flex-universal-parts-category-id="19058"]
-) {
+.flex-universal-parts .products > .flex-sub-categories {
   display: grid !important;
   grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-
-  gap: 5px !important;
+  gap: 8px !important;
 
   width: 100% !important;
   margin: 12px 0 16px !important;
   padding: 0 !important;
-
-  box-sizing: border-box !important;
 }
 
-
-/* Jednotlivá dlaždice */
-.flex-universal-parts
-> .products
-> .flex-sub-categories:has(
-  + .products-list[data-flex-universal-parts-category-id="19058"]
-)
-> a {
+.flex-universal-parts .products > .flex-sub-categories > a {
   display: flex !important;
-
   align-items: center !important;
-  justify-content: flex-start !important;
-
-  gap: 12px !important;
-
-  min-width: 0 !important;
   min-height: 80px !important;
 
-  margin: 0 !important;
   padding: 10px 14px !important;
 
-  box-sizing: border-box !important;
-
   background: #fff !important;
-
-  border: 1px solid #e1e1e1 !important;
-  border-radius: 0 !important;
+  border: 2px solid red !important;
 
   color: #000 !important;
-
-  font-size: 14px !important;
-  font-weight: 400 !important;
-
-  line-height: 1.25 !important;
-  text-align: left !important;
+  text-decoration: none !important;
   text-transform: none !important;
-  text-decoration: none !important;
-
-  white-space: normal !important;
 }
-
-
-/* Obrázek kategorie */
-.flex-universal-parts
-> .products
-> .flex-sub-categories:has(
-  + .products-list[data-flex-universal-parts-category-id="19058"]
-)
-> a::before {
-  content: "" !important;
-
-  display: block !important;
-  flex: 0 0 58px !important;
-
-  width: 58px !important;
-  height: 58px !important;
-
-  background-position: center !important;
-  background-repeat: no-repeat !important;
-  background-size: contain !important;
-
-  pointer-events: none !important;
-}
-
-
-/* Motorové oleje */
-.flex-universal-parts
-> .products
-> .flex-sub-categories
-> a[href*="19058~19106"]::before {
-  background-image:
-    url("https://eshop.auto-lenc.cz/Image.ashx?type=5&id=19106") !important;
-}
-
-
-/* Převodové oleje */
-.flex-universal-parts
-> .products
-> .flex-sub-categories
-> a[href*="19058~19107"]::before {
-  background-image:
-    url("https://eshop.auto-lenc.cz/Image.ashx?type=5&id=19107") !important;
-}
-
-
-/* Hydraulické oleje */
-.flex-universal-parts
-> .products
-> .flex-sub-categories
-> a[href*="19058~19117"]::before {
-  background-image:
-    url("https://eshop.auto-lenc.cz/Image.ashx?type=5&id=19117") !important;
-}
-
-
-/* Plastická maziva */
-.flex-universal-parts
-> .products
-> .flex-sub-categories
-> a[href*="19058~19121"]::before {
-  background-image:
-    url("https://eshop.auto-lenc.cz/Image.ashx?type=5&id=19121") !important;
-}
-
-
-/* Jemný hover – bez zásahu do funkce odkazu */
-.flex-universal-parts
-> .products
-> .flex-sub-categories:has(
-  + .products-list[data-flex-universal-parts-category-id="19058"]
-)
-> a:hover {
-  border-color: #bdbdbd !important;
-
-  color: #000 !important;
-  text-decoration: none !important;
-}
-
-
-/* =========================================================
-   TELEFON
-   2 dlaždice vedle sebe
-   ========================================================= */
 
 @media (max-width: 767px) {
-
-  .flex-universal-parts
-  > .products
-  > .flex-sub-categories:has(
-    + .products-list[data-flex-universal-parts-category-id="19058"]
-  ) {
+  .flex-universal-parts .products > .flex-sub-categories {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-
-    gap: 6px !important;
-
-    margin: 10px 0 14px !important;
   }
-
-
-  .flex-universal-parts
-  > .products
-  > .flex-sub-categories:has(
-    + .products-list[data-flex-universal-parts-category-id="19058"]
-  )
-  > a {
-    min-height: 92px !important;
-
-    padding: 8px !important;
-
-    gap: 8px !important;
-
-    font-size: 13px !important;
-  }
-
-
-  .flex-universal-parts
-  > .products
-  > .flex-sub-categories:has(
-    + .products-list[data-flex-universal-parts-category-id="19058"]
-  )
-  > a::before {
-    flex-basis: 48px !important;
-
-    width: 48px !important;
-    height: 48px !important;
-  }
-
 }
