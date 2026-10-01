@@ -1,12 +1,3 @@
-/* =========================================================
-   AUTOLENC UX
-   ========================================================= */
-
-
-/* =========================================================
-   UNIVERZÁLNÍ DÍLY – IKONY KATEGORIÍ
-   ========================================================= */
-
 .flex-universal-parts .categories .tree a[data-node-id="19058"] > .name,
 .flex-universal-parts .categories .tree a[data-node-id="19049"] > .name,
 .flex-universal-parts .categories .tree a[data-node-id="19050"] > .name,
@@ -23,7 +14,6 @@
   white-space: nowrap !important;
 }
 
-
 .flex-universal-parts .categories .tree a[data-node-id="19058"] > .name::before,
 .flex-universal-parts .categories .tree a[data-node-id="19049"] > .name::before,
 .flex-universal-parts .categories .tree a[data-node-id="19050"] > .name::before,
@@ -36,320 +26,352 @@
 .flex-universal-parts .categories .tree a[data-node-id="19505"] > .name::before,
 .flex-universal-parts .categories .tree a[data-node-id="19322"] > .name::before {
   content: "" !important;
-
   position: absolute !important;
   left: 0 !important;
   top: 50% !important;
-
   transform: translateY(-50%) !important;
-
   width: 30px !important;
   height: 30px !important;
-
   background:
     var(--autolenc-category-image)
     center / contain
     no-repeat !important;
-
   pointer-events: none !important;
 }
 
-
-/* Oleje a maziva */
-.flex-universal-parts
-.categories
-.tree
-a[data-node-id="19058"] > .name {
+.flex-universal-parts .categories .tree a[data-node-id="19058"] > .name {
   --autolenc-category-image:
     url("https://eshop.auto-lenc.cz/Image.ashx?type=5&id=19058");
 }
 
-
-/* Autobaterie */
-.flex-universal-parts
-.categories
-.tree
-a[data-node-id="19049"] > .name {
+.flex-universal-parts .categories .tree a[data-node-id="19049"] > .name {
   --autolenc-category-image:
     url("https://eshop.auto-lenc.cz/Image.ashx?type=5&id=19049");
 }
 
-
-/* Kapaliny */
-.flex-universal-parts
-.categories
-.tree
-a[data-node-id="19050"] > .name {
+.flex-universal-parts .categories .tree a[data-node-id="19050"] > .name {
   --autolenc-category-image:
     url("https://eshop.auto-lenc.cz/Image.ashx?type=5&id=19050");
 }
 
-
-/* Lakování */
-.flex-universal-parts
-.categories
-.tree
-a[data-node-id="19051"] > .name {
+.flex-universal-parts .categories .tree a[data-node-id="19051"] > .name {
   --autolenc-category-image:
     url("https://eshop.auto-lenc.cz/Image.ashx?type=5&id=19051");
 }
 
-
-/* Autochemie */
-.flex-universal-parts
-.categories
-.tree
-a[data-node-id="19052"] > .name {
+.flex-universal-parts .categories .tree a[data-node-id="19052"] > .name {
   --autolenc-category-image:
     url("https://eshop.auto-lenc.cz/Image.ashx?type=5&id=19052");
 }
 
-
-/* Autokosmetika */
-.flex-universal-parts
-.categories
-.tree
-a[data-node-id="19054"] > .name {
+.flex-universal-parts .categories .tree a[data-node-id="19054"] > .name {
   --autolenc-category-image:
     url("https://eshop.auto-lenc.cz/Image.ashx?type=5&id=19054");
 }
 
-
-/* Autopříslušenství */
-.flex-universal-parts
-.categories
-.tree
-a[data-node-id="19055"] > .name {
+.flex-universal-parts .categories .tree a[data-node-id="19055"] > .name {
   --autolenc-category-image:
     url("https://eshop.auto-lenc.cz/Image.ashx?type=5&id=19055");
 }
 
-
-/* Uni díly */
-.flex-universal-parts
-.categories
-.tree
-a[data-node-id="19056"] > .name {
+.flex-universal-parts .categories .tree a[data-node-id="19056"] > .name {
   --autolenc-category-image:
     url("https://eshop.auto-lenc.cz/Image.ashx?type=5&id=19056");
 }
 
-
-/* Akce a novinky */
-.flex-universal-parts
-.categories
-.tree
-a[data-node-id="19057"] > .name {
+.flex-universal-parts .categories .tree a[data-node-id="19057"] > .name {
   --autolenc-category-image:
     url("https://eshop.auto-lenc.cz/Image.ashx?type=5&id=19057");
 }
 
-
-/* Dílenské vybavení */
-.flex-universal-parts
-.categories
-.tree
-a[data-node-id="19505"] > .name {
+.flex-universal-parts .categories .tree a[data-node-id="19505"] > .name {
   --autolenc-category-image:
     url("https://eshop.auto-lenc.cz/Image.ashx?type=5&id=19505");
 }
 
-
-/* Pneuservis */
-.flex-universal-parts
-.categories
-.tree
-a[data-node-id="19322"] > .name {
+.flex-universal-parts .categories .tree a[data-node-id="19322"] > .name {
   --autolenc-category-image:
     url("https://eshop.auto-lenc.cz/Image.ashx?type=5&id=19322");
 }
 
 
-
-/* =========================================================
-   RYCHLÉ TECDOC DÍLY
-   ========================================================= */
-
-/*
-   Zatím pouze desktop.
-*/
-
 #autolenc-quick-parts {
-  display: none;
+  display: block !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  margin: 16px 0 20px !important;
+  padding: 0 0 18px !important;
+  border-bottom:
+    1px solid rgba(0, 0, 0, 0.35) !important;
+}
+
+#autolenc-quick-parts .autolenc-heading {
+  display: block !important;
+  position: static !important;
+
+  box-sizing: border-box !important;
+
+  width: auto !important;
+  height: auto !important;
+
+  margin: 0 0 12px !important;
+  padding: 0 !important;
+
+  color: #111 !important;
+  -webkit-text-fill-color: #111 !important;
+
+  background: transparent !important;
+
+  font-family: inherit !important;
+  font-size: 17px !important;
+  font-weight: 700 !important;
+  font-style: normal !important;
+  line-height: 1.3 !important;
+
+  text-align: left !important;
+  text-decoration: none !important;
+  text-indent: 0 !important;
+
+  opacity: 1 !important;
+  visibility: visible !important;
+
+  overflow: visible !important;
+
+  transform: none !important;
+}
+
+#autolenc-quick-parts .autolenc-grid {
+  display: grid !important;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr)) !important;
+
+  gap: 8px !important;
+
+  box-sizing: border-box !important;
+
+  width: 100% !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+#autolenc-quick-parts .autolenc-tile {
+  display: flex !important;
+
+  position: relative !important;
+
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  box-sizing: border-box !important;
+
+  width: 100% !important;
+  min-width: 0 !important;
+
+  height: 108px !important;
+  min-height: 108px !important;
+
+  gap: 6px !important;
+
+  margin: 0 !important;
+  padding: 8px 6px !important;
+
+  border: 1px solid #d0d0d0 !important;
+  border-radius: 6px !important;
+
+  background: #fff !important;
+
+  color: #111 !important;
+  -webkit-text-fill-color: #111 !important;
+
+  font-family: inherit !important;
+  font-style: normal !important;
+
+  text-align: center !important;
+  text-decoration: none !important;
+  text-indent: 0 !important;
+
+  opacity: 1 !important;
+  visibility: visible !important;
+
+  overflow: hidden !important;
+
+  transform: none !important;
+}
+
+#autolenc-quick-parts .autolenc-tile:visited,
+#autolenc-quick-parts .autolenc-tile:focus,
+#autolenc-quick-parts .autolenc-tile:active {
+  color: #111 !important;
+  -webkit-text-fill-color: #111 !important;
+  text-decoration: none !important;
+}
+
+#autolenc-quick-parts .autolenc-tile:hover {
+  border-color: #888 !important;
+  color: #111 !important;
+  -webkit-text-fill-color: #111 !important;
+  text-decoration: none !important;
+}
+
+#autolenc-quick-parts .autolenc-tile:focus-visible {
+  outline: 2px solid #245fa3 !important;
+  outline-offset: 2px !important;
+}
+
+#autolenc-quick-parts .autolenc-image {
+  display: block !important;
+
+  position: static !important;
+
+  flex: 0 0 52px !important;
+
+  box-sizing: border-box !important;
+
+  width: 52px !important;
+  min-width: 52px !important;
+  max-width: 52px !important;
+
+  height: 52px !important;
+  min-height: 52px !important;
+  max-height: 52px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  border: 0 !important;
+
+  object-fit: contain !important;
+
+  opacity: 1 !important;
+  visibility: visible !important;
+
+  transform: none !important;
+}
+
+#autolenc-quick-parts .autolenc-label {
+  display: block !important;
+
+  position: static !important;
+
+  flex: 0 0 auto !important;
+
+  box-sizing: border-box !important;
+
+  min-width: 0 !important;
+  max-width: 100% !important;
+
+  width: 100% !important;
+  height: auto !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  color: #111 !important;
+  -webkit-text-fill-color: #111 !important;
+
+  background: transparent !important;
+
+  font-family: inherit !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  font-style: normal !important;
+  line-height: 1.2 !important;
+
+  text-align: center !important;
+  text-decoration: none !important;
+  text-indent: 0 !important;
+  text-transform: none !important;
+
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+
+  opacity: 1 !important;
+  visibility: visible !important;
+
+  overflow: visible !important;
+  text-overflow: clip !important;
+
+  clip: auto !important;
+  clip-path: none !important;
+
+  transform: none !important;
+
+  z-index: 1 !important;
+}
+
+
+@media (min-width: 768px) and (max-width: 1023px) {
+
+  #autolenc-quick-parts .autolenc-grid {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr)) !important;
+
+    gap: 10px !important;
+  }
+
+  #autolenc-quick-parts .autolenc-tile {
+    height: 112px !important;
+    min-height: 112px !important;
+  }
+
+  #autolenc-quick-parts .autolenc-image {
+    flex-basis: 56px !important;
+
+    width: 56px !important;
+    min-width: 56px !important;
+    max-width: 56px !important;
+
+    height: 56px !important;
+    min-height: 56px !important;
+    max-height: 56px !important;
+  }
+
 }
 
 
 @media (min-width: 1024px) {
 
   #autolenc-quick-parts {
-    display: block !important;
-
-    box-sizing: border-box !important;
-
-    width: 100% !important;
-
     margin: 18px 0 24px !important;
     padding: 0 0 22px !important;
-
-    /*
-      Oddělení našich rychlých dlaždic
-      od původního TecDoc stromu.
-    */
-    border-bottom:
-      1px solid rgba(0, 0, 0, 0.5) !important;
   }
-
-
-  /* -------------------------------------------------------
-     NADPIS
-     ------------------------------------------------------- */
 
   #autolenc-quick-parts .autolenc-heading {
-    display: block !important;
-
-    position: static !important;
-
-    margin: 0 0 14px !important;
-    padding: 0 !important;
-
-    width: auto !important;
-    height: auto !important;
-
-    color: #111 !important;
-    -webkit-text-fill-color: #111 !important;
-
-    font-family: inherit !important;
+    margin-bottom: 14px !important;
     font-size: 18px !important;
-    font-weight: 700 !important;
-    font-style: normal !important;
-    line-height: 1.3 !important;
-
-    text-align: left !important;
-    text-indent: 0 !important;
-
-    opacity: 1 !important;
-    visibility: visible !important;
-
-    overflow: visible !important;
-
-    transform: none !important;
   }
 
-
-  /* -------------------------------------------------------
-     GRID – 4 DLAŽDICE VEDLE SEBE
-     ------------------------------------------------------- */
-
   #autolenc-quick-parts .autolenc-grid {
-    display: grid !important;
-
     grid-template-columns:
       repeat(4, minmax(0, 1fr)) !important;
 
     gap: 10px !important;
-
-    box-sizing: border-box !important;
-
-    width: 100% !important;
-
-    margin: 0 !important;
-    padding: 0 !important;
   }
 
-
-  /* -------------------------------------------------------
-     DLAŽDICE
-     ------------------------------------------------------- */
-
   #autolenc-quick-parts .autolenc-tile {
-    display: flex !important;
-
-    position: relative !important;
+    flex-direction: row !important;
 
     align-items: center !important;
-
-    box-sizing: border-box !important;
-
-    width: 100% !important;
-    min-width: 0 !important;
+    justify-content: flex-start !important;
 
     height: 82px !important;
     min-height: 82px !important;
 
     gap: 12px !important;
 
-    margin: 0 !important;
     padding: 10px 14px !important;
 
-    border: 1px solid #ddd !important;
     border-radius: 4px !important;
 
-    background: #fff !important;
-
-    color: #111 !important;
-    -webkit-text-fill-color: #111 !important;
-
-    font-family: inherit !important;
-    font-size: 14px !important;
-    font-weight: 400 !important;
-    font-style: normal !important;
-    line-height: 1.25 !important;
-
     text-align: left !important;
-    text-decoration: none !important;
-    text-indent: 0 !important;
-
-    opacity: 1 !important;
-    visibility: visible !important;
-
-    overflow: hidden !important;
-
-    transform: none !important;
   }
-
-
-  #autolenc-quick-parts .autolenc-tile:hover {
-    border-color: #777 !important;
-
-    color: #111 !important;
-    -webkit-text-fill-color: #111 !important;
-
-    text-decoration: none !important;
-  }
-
-
-  #autolenc-quick-parts .autolenc-tile:visited {
-    color: #111 !important;
-    -webkit-text-fill-color: #111 !important;
-  }
-
-
-  #autolenc-quick-parts .autolenc-tile:focus {
-    color: #111 !important;
-    -webkit-text-fill-color: #111 !important;
-
-    text-decoration: none !important;
-  }
-
-
-  #autolenc-quick-parts .autolenc-tile:focus-visible {
-    outline: 2px solid #245fa3 !important;
-    outline-offset: 2px !important;
-  }
-
-
-  /* -------------------------------------------------------
-     IKONA DLAŽDICE
-     ------------------------------------------------------- */
 
   #autolenc-quick-parts .autolenc-image {
-    display: block !important;
-
-    position: static !important;
-
     flex: 0 0 50px !important;
-
-    box-sizing: border-box !important;
 
     width: 50px !important;
     min-width: 50px !important;
@@ -358,78 +380,17 @@ a[data-node-id="19322"] > .name {
     height: 50px !important;
     min-height: 50px !important;
     max-height: 50px !important;
-
-    margin: 0 !important;
-    padding: 0 !important;
-
-    border: 0 !important;
-
-    object-fit: contain !important;
-
-    opacity: 1 !important;
-    visibility: visible !important;
-
-    transform: none !important;
   }
 
-
-  /* -------------------------------------------------------
-     TEXT DLAŽDICE
-
-     Vlastnosti jsou záměrně explicitní,
-     aby původní TecDoc CSS text neschovalo.
-     ------------------------------------------------------- */
-
   #autolenc-quick-parts .autolenc-label {
-    display: block !important;
-
-    position: static !important;
-
     flex: 1 1 auto !important;
 
-    box-sizing: border-box !important;
-
-    min-width: 0 !important;
-    max-width: none !important;
-
     width: auto !important;
-    height: auto !important;
 
-    margin: 0 !important;
-    padding: 0 !important;
-
-    color: #111 !important;
-    -webkit-text-fill-color: #111 !important;
-
-    background: transparent !important;
-
-    font-family: inherit !important;
     font-size: 14px !important;
-    font-weight: 600 !important;
-    font-style: normal !important;
     line-height: 1.3 !important;
 
     text-align: left !important;
-    text-decoration: none !important;
-    text-indent: 0 !important;
-    text-transform: none !important;
-
-    white-space: normal !important;
-    word-break: normal !important;
-    overflow-wrap: break-word !important;
-
-    opacity: 1 !important;
-    visibility: visible !important;
-
-    overflow: visible !important;
-    text-overflow: clip !important;
-
-    clip: auto !important;
-    clip-path: none !important;
-
-    transform: none !important;
-
-    z-index: 1 !important;
   }
 
 }
