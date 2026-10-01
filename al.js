@@ -1,144 +1,112 @@
 (function () {
   'use strict';
 
-  const script = document.getElementById('autolenc-custom-ux-js');
-
-  if (script && script.__autolencStarted) return;
-  if (script) script.__autolencStarted = true;
-
-
-  /* =======================================================
-     OBRÁZKY
-     ======================================================= */
+  if (window.__autolencQuickPartsDirectStarted) return;
+  window.__autolencQuickPartsDirectStarted = true;
 
   const imageBase =
     'https://dominik0dw.github.io/al-site-assets/image-tec/';
-
-
-  /* =======================================================
-     RYCHLÉ TECDOC DÍLY
-     ======================================================= */
 
   const parts = [
     {
       id: '101994',
       title: 'Motorový olej',
+      slug: 'olej',
       path: ['100002', '100245', '101994'],
       image: imageBase + 'olej.png'
     },
-
     {
       id: '100259',
       title: 'Olejový filtr',
+      slug: 'olejovy-filtr',
       path: ['100005', '100259'],
       image: imageBase + 'olejfiltr.png'
     },
-
     {
       id: '100263',
       title: 'Kabinový filtr',
+      slug: 'kabinovy-vzduchovy-filtr',
       path: ['100005', '100263'],
       image: imageBase + 'kabfiltr.png'
     },
-
     {
       id: '100260',
       title: 'Vzduchový filtr',
+      slug: 'vzduchovy-filtr',
       path: ['100005', '100260'],
       image: imageBase + 'vzduchfiltr.png'
     },
-
     {
       id: '100261',
       title: 'Palivový filtr',
+      slug: 'palivovy-filtr',
       path: ['100005', '100261'],
       image: imageBase + 'palfiltr.png'
     },
-
     {
       id: '100042',
       title: 'Baterie',
+      slug: 'baterie',
       path: ['100010', '100042'],
       image: imageBase + 'baterie.png'
     },
-
     {
       id: '100133',
       title: 'Stírací gumička',
+      slug: 'stiraci-gumicka',
       path: ['100018', '100133'],
       image: imageBase + 'sterac.png'
     },
-
     {
       id: '100032',
       title: 'Brzdové kotouče',
+      slug: 'brzdovy-kotouc',
       path: ['100006', '100626', '100032'],
       image: imageBase + 'kotouc.png'
     },
-
     {
       id: '100030',
       title: 'Brzdové destičky',
+      slug: 'brzdove-oblozeni',
       path: ['100006', '100626', '100030'],
       image: imageBase + 'desky.png'
     },
-
     {
       id: '100121',
       title: 'Tlumiče',
+      slug: 'tlumic-perovani',
       path: ['100011', '100121'],
       image: imageBase + 'tlumic.png'
     },
-
     {
       id: '100113',
       title: 'Pružiny',
+      slug: 'pruzina-podvozku',
       path: ['100011', '100113'],
       image: imageBase + 'pruzina.png'
     },
-
     {
       id: '100579',
       title: 'Ložisko kola',
+      slug: 'lozisko-kola',
       path: ['100013', '100206', '100579'],
       image: imageBase + 'lozisko.png'
     }
   ];
 
-
-  const shortcutRx =
-    /^javascript:\s*getTecDocConstructionGroupShortcutSubcategories\(\s*\d+\s*,\s*'([a-z0-9-]+)'\s*,\s*'([1-9]\d*)'\s*,\s*'([a-z0-9-]+)'\s*,\s*'([1-9]\d*)'\s*,\s*'([a-z0-9-]+)'\s*,\s*'([1-9]\d*)'\s*,\s*'(osobni)'\s*,\s*''\s*\)\s*;?\s*$/;
-
-  const MAX_REQUESTS_PER_VEHICLE = 12;
-
   let block = null;
-  let target = null;
-  let signature = '';
-  let loading = '';
-  let generation = 0;
-  let timer = null;
-  let disabled = false;
+  let mountedSignature = '';
+  let observer = null;
+  let scheduled = false;
 
-  const cache = new Map();
-
-  let requestSig = '';
-  let requestCount = 0;
-
-
-  function lang() {
-    const match = location.pathname.match(/^\/([^/]+)\//);
-    return match ? match[1] : 'cs';
-  }
-
-
-  function routeSignature() {
+  function getVehicleContext() {
     const p = location.pathname
       .replace(/^\/+|\/+$/g, '')
       .split('/');
 
     if (
       (p.length !== 10 && p.length !== 12) ||
-      p[0] !== lang() ||
+      !/^[a-z]{2}$/.test(p[0]) ||
       p[1] !== 'katalog' ||
       p[2] !== 'tecdoc' ||
       p[3] !== 'osobni'
@@ -146,32 +114,22 @@
       return null;
     }
 
-    const numericStart = p.length === 10 ? 7 : 8;
+    const categoryPage = p.length === 12;
+    const numericStart = categoryPage ? 8 : 7;
 
-    const slugs = [
-      p[4],
-      p[5],
-      p[6]
-    ];
+    const manufacturer = p[4];
+    const model = p[5];
+    const engine = p[6];
 
-    if (p.length === 12) {
-      slugs.push(p[7]);
-    }
+    const manufacturerId = p[numericStart];
+    const modelId = p[numericStart + 1];
+    const engineId = p[numericStart + 2];
 
     if (
-      !slugs.every(value =>
+      ![manufacturer, model, engine].every(value =>
         /^[a-z0-9-]+$/.test(value)
-      )
-    ) {
-      return null;
-    }
-
-    if (
-      ![
-        p[numericStart],
-        p[numericStart + 1],
-        p[numericStart + 2]
-      ].every(value =>
+      ) ||
+      ![manufacturerId, modelId, engineId].every(value =>
         /^[1-9]\d*$/.test(value)
       )
     ) {
@@ -179,648 +137,134 @@
     }
 
     if (
-      p.length === 12 &&
-      !/^[1-9]\d*$/.test(p[11])
+      categoryPage &&
+      (
+        !/^[a-z0-9-]+$/.test(p[7]) ||
+        !/^[1-9]\d*$/.test(p[11])
+      )
     ) {
       return null;
     }
 
-    return [
-      p[3],
-      p[4],
-      p[numericStart],
-      p[5],
-      p[numericStart + 1],
-      p[6],
-      p[numericStart + 2]
-    ].join('|');
-  }
+    const base =
+      '/' + [
+        p[0],
+        'katalog',
+        'tecdoc',
+        'osobni',
+        manufacturer,
+        model,
+        engine
+      ].join('/') + '/';
 
-
-  function context() {
-    const roots =
-      document.querySelectorAll('.flex-tecdoc');
-
-    if (roots.length !== 1) {
-      return null;
-    }
-
-    const containers = Array.from(
-      roots[0].querySelectorAll(
-        '.categories .shortcuts-container'
-      )
-    ).filter(element =>
-      element.querySelector(
-        'a[href*="getTecDocConstructionGroupShortcutSubcategories"]'
-      )
-    );
-
-    if (containers.length !== 1) {
-      return null;
-    }
-
-    const sourceLinks =
-      containers[0].querySelectorAll(
-        'a[href*="getTecDocConstructionGroupShortcutSubcategories"]'
-      );
-
-    let vehicle = null;
-
-    for (const link of sourceLinks) {
-      const match = (
-        link.getAttribute('href') || ''
-      ).trim().match(shortcutRx);
-
-      if (!match) {
-        return null;
-      }
-
-      const candidate = {
-        manufacturerName: match[1],
-        manufacturerID: match[2],
-
-        modelName: match[3],
-        modelID: match[4],
-
-        engineName: match[5],
-        engineID: match[6],
-
-        vehicleType: match[7]
-      };
-
-      candidate.signature = [
-        candidate.vehicleType,
-        candidate.manufacturerName,
-        candidate.manufacturerID,
-        candidate.modelName,
-        candidate.modelID,
-        candidate.engineName,
-        candidate.engineID
-      ].join('|');
-
-      if (!vehicle) {
-        vehicle = candidate;
-      } else if (
-        vehicle.signature !== candidate.signature
-      ) {
-        return null;
-      }
-    }
-
-    if (
-      !vehicle ||
-      vehicle.signature !== routeSignature()
-    ) {
-      return null;
-    }
+    const vehicleIdPath =
+      [manufacturerId, modelId, engineId].join('/');
 
     return {
-      target: containers[0],
-      vehicle: vehicle
+      base: base,
+      vehicleIdPath: vehicleIdPath,
+      signature: [
+        manufacturer,
+        manufacturerId,
+        model,
+        modelId,
+        engine,
+        engineId
+      ].join('|')
     };
   }
 
+  function getTarget() {
+    const roots = document.querySelectorAll('.flex-tecdoc');
+    if (roots.length !== 1) return null;
 
-  function getApiBase() {
-    try {
-      if (
-        typeof API_LEGACY_TECDOCSVC !== 'string'
-      ) {
-        return null;
-      }
+    const preferred = Array.from(
+      roots[0].querySelectorAll('.categories .shortcuts-container')
+    ).filter(element => element.querySelector('.shortcuts'));
 
-      const url = new URL(
-        API_LEGACY_TECDOCSVC,
-        location.origin + '/'
-      );
+    if (preferred.length === 1) return preferred[0];
 
-      if (
-        url.origin !== location.origin ||
-        url.protocol !== 'https:' ||
-        url.username ||
-        url.password ||
-        url.search ||
-        url.hash
-      ) {
-        return null;
-      }
+    const fallback = Array.from(
+      roots[0].querySelectorAll('.shortcuts-container')
+    ).filter(element => element.querySelector('.shortcuts'));
 
-      return url.pathname.endsWith('/')
-        ? url.pathname
-        : url.pathname + '/';
-
-    } catch (_) {
-      return null;
-    }
+    return fallback.length === 1 ? fallback[0] : null;
   }
 
+  function buildHref(ctx, part) {
+    if (
+      part.path.length < 2 ||
+      part.path[part.path.length - 1] !== part.id ||
+      !part.path.every(value => /^[1-9]\d*$/.test(value)) ||
+      !/^[a-z0-9-]+$/.test(part.slug)
+    ) {
+      return null;
+    }
+
+    return (
+      ctx.base +
+      part.slug + '/' +
+      ctx.vehicleIdPath + '/' +
+      part.id + '/?path=' +
+      part.path.join('~')
+    );
+  }
 
   function removeBlock() {
-    if (
-      block &&
-      block.isConnected
-    ) {
+    if (block && block.isConnected) {
       block.remove();
     }
 
     block = null;
+    mountedSignature = '';
   }
 
-
-  function parseItems(response) {
-    const data =
-      typeof response === 'string'
-        ? JSON.parse(response)
-        : response;
-
-    if (
-      !data ||
-      typeof data.ItemsHTMLContent !== 'string'
-    ) {
-      return null;
-    }
-
-    const template =
-      document.createElement('template');
-
-    template.innerHTML =
-      data.ItemsHTMLContent;
-
-    return template.content;
-  }
-
-
-  function branch(
-    parentId,
-    fullPath,
-    vehicle
-  ) {
-    const key =
-      vehicle.signature +
-      '|' +
-      fullPath;
-
-    if (cache.has(key)) {
-      return cache.get(key);
-    }
-
-    if (
-      requestSig !== vehicle.signature
-    ) {
-      requestSig = vehicle.signature;
-      requestCount = 0;
-    }
-
-    if (
-      requestCount >=
-      MAX_REQUESTS_PER_VEHICLE
-    ) {
-      const skipped =
-        Promise.resolve(null);
-
-      cache.set(key, skipped);
-
-      return skipped;
-    }
-
-    requestCount++;
-
-    const promise =
-      new Promise(resolve => {
-        let done = false;
-
-        function finish(value) {
-          if (done) return;
-
-          done = true;
-          resolve(value);
-        }
-
-        const timeout =
-          window.setTimeout(
-            () => finish(null),
-            8000
-          );
-
-        try {
-          const apiBase =
-            getApiBase();
-
-          if (
-            !window.app ||
-            !window.app.ajax ||
-            typeof window.app.ajax.postMvc !== 'function' ||
-            !apiBase
-          ) {
-            window.clearTimeout(timeout);
-            finish(null);
-            return;
-          }
-
-          window.app.ajax.postMvc({
-            url:
-              apiBase +
-              'GetTecDocConstructionGroupsSubcategories',
-
-            data: {
-              id: parentId,
-
-              manufacturerName:
-                vehicle.manufacturerName,
-
-              manufacturerID:
-                vehicle.manufacturerID,
-
-              modelName:
-                vehicle.modelName,
-
-              modelID:
-                vehicle.modelID,
-
-              engineName:
-                vehicle.engineName,
-
-              engineID:
-                vehicle.engineID,
-
-              vehicleType:
-                vehicle.vehicleType,
-
-              fullCategoryIDsPath:
-                fullPath,
-
-              isShortcut:
-                false
-            }
-
-          }, function (response) {
-            window.clearTimeout(timeout);
-
-            try {
-              finish(
-                parseItems(response)
-              );
-
-            } catch (error) {
-              console.warn(
-                '[AutoLenc UX] Neplatná odpověď TecDoc větve ' +
-                fullPath,
-                error
-              );
-
-              finish(null);
-            }
-          });
-
-        } catch (error) {
-          window.clearTimeout(timeout);
-
-          console.warn(
-            '[AutoLenc UX] Nelze načíst TecDoc větev ' +
-            fullPath,
-            error
-          );
-
-          finish(null);
-        }
-      });
-
-    cache.set(key, promise);
-
-    return promise;
-  }
-
-
-  function findNode(
-    fragment,
-    nodeId,
-    fullPath,
-    requireEnd
-  ) {
-    if (!fragment) {
-      return null;
-    }
-
-    const found = Array.from(
-      fragment.querySelectorAll(
-        'a[data-node-id="' +
-        nodeId +
-        '"]'
-      )
-    ).filter(link => {
-
-      if (
-        (
-          link.getAttribute(
-            'data-full-category-ids-path'
-          ) || ''
-        ) !== fullPath
-      ) {
-        return false;
-      }
-
-      if (requireEnd) {
-        return (
-          link.getAttribute(
-            'data-is-end-node'
-          ) === 'true' &&
-
-          link.getAttribute(
-            'data-is-expandable'
-          ) === 'false'
-        );
-      }
-
-      return (
-        link.getAttribute(
-          'data-is-end-node'
-        ) === 'false' &&
-
-        link.getAttribute(
-          'data-is-expandable'
-        ) === 'true'
-      );
-    });
-
-    return found.length === 1
-      ? found[0]
-      : null;
-  }
-
-
-  function finalHref(
-    rawHref,
-    part,
-    vehicle
-  ) {
-    let url;
-
-    try {
-      url = new URL(
-        rawHref,
-        location.origin + '/'
-      );
-
-    } catch (_) {
-      return null;
-    }
-
-    if (
-      url.origin !== location.origin ||
-      url.protocol !== 'https:' ||
-      url.username ||
-      url.password ||
-      url.hash
-    ) {
-      return null;
-    }
-
-    const p =
-      url.pathname
-        .replace(/^\/+|\/+$/g, '')
-        .split('/');
-
-    if (
-      p.length !== 12 ||
-      p[0] !== lang() ||
-      p[1] !== 'katalog' ||
-      p[2] !== 'tecdoc' ||
-
-      p[3] !==
-        vehicle.vehicleType ||
-
-      p[4] !==
-        vehicle.manufacturerName ||
-
-      p[5] !==
-        vehicle.modelName ||
-
-      p[6] !==
-        vehicle.engineName ||
-
-      p[8] !==
-        vehicle.manufacturerID ||
-
-      p[9] !==
-        vehicle.modelID ||
-
-      p[10] !==
-        vehicle.engineID ||
-
-      p[11] !==
-        part.id ||
-
-      !/^[a-z0-9-]+$/.test(p[7])
-    ) {
-      return null;
-    }
-
-    const expectedPath =
-      part.path.join('~');
-
-    if (
-      url.searchParams
-        .getAll('path')
-        .length !== 1 ||
-
-      url.searchParams
-        .get('path') !== expectedPath ||
-
-      Array.from(
-        url.searchParams.keys()
-      ).some(key =>
-        key !== 'path'
-      )
-    ) {
-      return null;
-    }
-
-    return url.href;
-  }
-
-
-  async function resolvePart(
-    part,
-    vehicle
-  ) {
-    if (
-      part.path[
-        part.path.length - 1
-      ] !== part.id
-    ) {
-      return null;
-    }
-
-    for (
-      let i = 0;
-      i < part.path.length - 1;
-      i++
-    ) {
-      const parentId =
-        part.path[i];
-
-      const parentPath =
-        part.path
-          .slice(0, i + 1)
-          .join('~');
-
-      const childId =
-        part.path[i + 1];
-
-      const childPath =
-        part.path
-          .slice(0, i + 2)
-          .join('~');
-
-      const isFinal =
-        i + 1 ===
-        part.path.length - 1;
-
-      const fragment =
-        await branch(
-          parentId,
-          parentPath,
-          vehicle
-        );
-
-      const link =
-        findNode(
-          fragment,
-          childId,
-          childPath,
-          isFinal
-        );
-
-      if (!link) {
-        return null;
-      }
-
-      if (isFinal) {
-        const href =
-          finalHref(
-            link.getAttribute('href'),
-            part,
-            vehicle
-          );
-
-        return href
-          ? {
-              part: part,
-              href: href
-            }
-          : null;
-      }
-    }
-
-    return null;
-  }
-
-
-  function render(
-    ctx,
-    entries
-  ) {
-    removeBlock();
-
-    if (
-      !entries.length ||
-      !ctx.target.isConnected ||
-      document.getElementById(
-        'autolenc-quick-parts'
-      )
-    ) {
-      return;
-    }
-
-    const section =
-      document.createElement('section');
-
-    section.id =
-      'autolenc-quick-parts';
-
-    section.dataset.vehicleSignature =
-      ctx.vehicle.signature;
-
+  function createBlock(ctx) {
+    const section = document.createElement('section');
+
+    section.id = 'autolenc-quick-parts';
+    section.dataset.vehicleSignature = ctx.signature;
     section.setAttribute(
       'aria-labelledby',
       'autolenc-quick-parts-title'
     );
 
+    const heading = document.createElement('h2');
 
-    const heading =
-      document.createElement('h2');
+    heading.id = 'autolenc-quick-parts-title';
+    heading.className = 'autolenc-heading';
+    heading.textContent = 'Nejčastěji hledané díly';
 
-    heading.id =
-      'autolenc-quick-parts-title';
+    const grid = document.createElement('div');
+    grid.className = 'autolenc-grid';
 
-    heading.className =
-      'autolenc-heading';
+    for (const part of parts) {
+      const href = buildHref(ctx, part);
+      if (!href) continue;
 
-    heading.textContent =
-      'Nejčastěji hledané díly';
+      const link = document.createElement('a');
 
-
-    const grid =
-      document.createElement('div');
-
-    grid.className =
-      'autolenc-grid';
-
-
-    for (const entry of entries) {
-      const link =
-        document.createElement('a');
-
-      link.className =
-        'autolenc-tile';
-
-      link.href =
-        entry.href;
-
-      link.setAttribute(
-        'data-autolenc-node-id',
-        entry.part.id
-      );
-
+      link.className = 'autolenc-tile';
+      link.href = href;
+      link.setAttribute('data-autolenc-node-id', part.id);
 
       try {
-        const imageUrl =
-          new URL(
-            entry.part.image
-          );
+        const imageUrl = new URL(part.image);
 
         if (
           imageUrl.protocol === 'https:' &&
           !imageUrl.username &&
           !imageUrl.password
         ) {
-          const image =
-            document.createElement('img');
+          const image = document.createElement('img');
 
-          image.className =
-            'autolenc-image';
-
-          image.src =
-            imageUrl.href;
-
-          image.alt =
-            '';
-
-          image.width =
-            50;
-
-          image.height =
-            50;
-
-          /*
-            Obrázky se mají načíst až když
-            je browser opravdu potřebuje.
-          */
-          image.loading =
-            'lazy';
-
-          image.decoding =
-            'async';
+          image.className = 'autolenc-image';
+          image.src = imageUrl.href;
+          image.alt = '';
+          image.width = 50;
+          image.height = 50;
+          image.loading = 'lazy';
+          image.decoding = 'async';
 
           image.addEventListener(
             'error',
@@ -830,309 +274,88 @@
 
           link.appendChild(image);
         }
-
       } catch (_) {}
 
+      const label = document.createElement('span');
 
-      const label =
-        document.createElement('span');
-
-      label.className =
-        'autolenc-label';
-
-      label.textContent =
-        entry.part.title;
+      label.className = 'autolenc-label';
+      label.textContent = part.title;
 
       link.appendChild(label);
-
       grid.appendChild(link);
     }
 
+    if (!grid.children.length) return null;
 
-    section.append(
-      heading,
-      grid
-    );
+    section.append(heading, grid);
 
+    return section;
+  }
 
-    function guard(event) {
-      const link =
-        event.target.closest &&
-        event.target.closest(
-          'a.autolenc-tile'
-        );
+  function mount() {
+    scheduled = false;
 
-      if (!link) return;
+    const ctx = getVehicleContext();
+    const target = getTarget();
 
-      const now =
-        context();
-
-      if (
-        !now ||
-        now.vehicle.signature !==
-          section.dataset.vehicleSignature
-      ) {
-        event.preventDefault();
-        refresh();
-      }
+    if (!ctx || !target) {
+      removeBlock();
+      return;
     }
 
+    if (
+      block &&
+      block.isConnected &&
+      mountedSignature === ctx.signature &&
+      block.nextElementSibling === target
+    ) {
+      return;
+    }
 
-    [
-      'click',
-      'auxclick',
-      'contextmenu',
-      'dragstart'
-    ].forEach(eventName => {
-      section.addEventListener(
-        eventName,
-        guard,
-        true
-      );
-    });
+    removeBlock();
 
+    const section = createBlock(ctx);
 
-    ctx.target.before(section);
+    if (!section) return;
+
+    target.before(section);
 
     block = section;
+    mountedSignature = ctx.signature;
   }
 
+  function scheduleMount() {
+    if (scheduled) return;
 
-  async function load(ctx) {
-    const run =
-      ++generation;
-
-    loading =
-      ctx.vehicle.signature;
-
-    removeBlock();
-
-    const entries = [];
-
-    for (const part of parts) {
-      if (
-        run !== generation ||
-        disabled
-      ) {
-        return;
-      }
-
-      try {
-        const entry =
-          await resolvePart(
-            part,
-            ctx.vehicle
-          );
-
-        if (entry) {
-          entries.push(entry);
-        }
-
-      } catch (error) {
-        console.warn(
-          '[AutoLenc UX] Přeskočena kategorie ' +
-          part.id,
-          error
-        );
-      }
-    }
-
-    if (
-      run !== generation ||
-      disabled
-    ) {
-      return;
-    }
-
-    const now =
-      context();
-
-    if (
-      !now ||
-      now.vehicle.signature !==
-        ctx.vehicle.signature
-    ) {
-      return;
-    }
-
-    loading = '';
-
-    signature =
-      now.vehicle.signature;
-
-    target =
-      now.target;
-
-    render(
-      now,
-      entries
-    );
+    scheduled = true;
+    window.requestAnimationFrame(mount);
   }
 
+  function startObserver() {
+    if (observer) return;
 
-  function resetState() {
-    generation++;
+    observer = new MutationObserver(scheduleMount);
 
-    loading = '';
-    signature = '';
-    target = null;
-
-    cache.clear();
-
-    requestSig = '';
-    requestCount = 0;
-
-    removeBlock();
+    observer.observe(document.documentElement, {
+      childList: true,
+      subtree: true
+    });
   }
 
+  window.addEventListener('pageshow', scheduleMount);
+  window.addEventListener('popstate', scheduleMount);
 
-  function refresh() {
-    if (
-      disabled ||
-      document.hidden ||
-      !window.matchMedia(
-        '(min-width: 1024px)'
-      ).matches
-    ) {
-      return;
-    }
-
-    try {
-      const ctx =
-        context();
-
-      if (!ctx) {
-        resetState();
-        return;
-      }
-
-      const same =
-        (
-          ctx.vehicle.signature ===
-            signature &&
-
-          ctx.target ===
-            target
-        );
-
-      if (
-        same &&
-        block &&
-        block.isConnected
-      ) {
-        return;
-      }
-
-      if (
-        ctx.vehicle.signature ===
-        loading
-      ) {
-        return;
-      }
-
-      if (
-        ctx.vehicle.signature !==
-        signature
-      ) {
-        cache.clear();
-
-        requestSig =
-          ctx.vehicle.signature;
-
-        requestCount =
-          0;
-
-        signature =
-          '';
-      }
-
-      load(ctx);
-
-    } catch (error) {
-      disabled = true;
-
-      generation++;
-
-      loading = '';
-
-      if (timer !== null) {
-        window.clearInterval(timer);
-      }
-
-      timer = null;
-
-      removeBlock();
-
-      console.warn(
-        '[AutoLenc UX] Doplněk byl vypnut:',
-        error
-      );
-    }
-  }
-
-
-  function start() {
-    if (disabled) {
-      return;
-    }
-
-    refresh();
-
-    if (timer === null) {
-      timer =
-        window.setInterval(
-          refresh,
-          1000
-        );
-    }
-  }
-
-
-  function pause() {
-    generation++;
-
-    loading = '';
-
-    if (timer !== null) {
-      window.clearInterval(timer);
-    }
-
-    timer = null;
-  }
-
-
-  window.addEventListener(
-    'pagehide',
-    pause
-  );
-
-  window.addEventListener(
-    'pageshow',
-    start
-  );
-
-  window.addEventListener(
-    'popstate',
-    refresh
-  );
-
-  document.addEventListener(
-    'visibilitychange',
-    refresh
-  );
-
-
-  if (
-    document.readyState === 'loading'
-  ) {
+  if (document.readyState === 'loading') {
     document.addEventListener(
       'DOMContentLoaded',
-      start,
+      () => {
+        mount();
+        startObserver();
+      },
       { once: true }
     );
-
   } else {
-    start();
+    mount();
+    startObserver();
   }
-
 })();
