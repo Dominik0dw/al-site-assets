@@ -1,32 +1,270 @@
-/* TEST – pouze produktové zobrazení univerzálních dílů */
+/* =========================================================
+   AUTO LENC – PODKATEGORIE NAD PRODUKTY
+   Pouze vizuální CSS úprava.
+   Nemění odkazy, HTML ani funkce Nextisu.
+   ========================================================= */
 
-.flex-universal-parts .products > .flex-sub-categories {
+
+/* ---------------------------------------------------------
+   MŘÍŽKA
+   Aktivuje se pouze v produktovém zobrazení univerzálních dílů
+   --------------------------------------------------------- */
+
+.flex-universal-parts
+.products
+> .flex-sub-categories {
   display: grid !important;
   grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+
   gap: 8px !important;
 
   width: 100% !important;
-  margin: 12px 0 16px !important;
+
+  margin: 10px 0 14px !important;
   padding: 0 !important;
+
+  box-sizing: border-box !important;
 }
 
-.flex-universal-parts .products > .flex-sub-categories > a {
+
+/* ---------------------------------------------------------
+   DLAŽDICE
+   --------------------------------------------------------- */
+
+.flex-universal-parts
+.products
+> .flex-sub-categories
+> a {
   display: flex !important;
+
   align-items: center !important;
-  min-height: 80px !important;
+  justify-content: flex-start !important;
 
-  padding: 10px 14px !important;
+  min-width: 0 !important;
+  min-height: 66px !important;
 
-  background: #fff !important;
-  border: 2px solid red !important;
+  gap: 10px !important;
 
-  color: #000 !important;
-  text-decoration: none !important;
+  margin: 0 !important;
+  padding: 7px 12px !important;
+
+  box-sizing: border-box !important;
+
+  background: #ffffff !important;
+
+  border: 1px solid #d8d8d8 !important;
+  border-radius: 4px !important;
+
+  box-shadow: none !important;
+
+  color: #111111 !important;
+
+  font-family: inherit !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+
+  line-height: 1.2 !important;
+
+  text-align: left !important;
   text-transform: none !important;
+  text-decoration: none !important;
+
+  white-space: normal !important;
+
+  cursor: pointer !important;
+
+  transition:
+    border-color 0.15s ease,
+    background-color 0.15s ease,
+    box-shadow 0.15s ease !important;
 }
+
+
+/* Hover – jemný, žádné skákání dlaždice */
+
+.flex-universal-parts
+.products
+> .flex-sub-categories
+> a:hover {
+  background: #fafafa !important;
+
+  border-color: #b7b7b7 !important;
+
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06) !important;
+
+  color: #111111 !important;
+  text-decoration: none !important;
+}
+
+
+/* Kliknutí */
+
+.flex-universal-parts
+.products
+> .flex-sub-categories
+> a:active {
+  background: #f5f5f5 !important;
+  box-shadow: none !important;
+}
+
+
+/* =========================================================
+   OBRÁZKY – OLEJE A MAZIVA
+   ========================================================= */
+
+
+/* Společné nastavení obrázku jen pro tyto 4 kategorie */
+
+.flex-universal-parts
+.products
+> .flex-sub-categories
+> a[href*="19058~19106"]::before,
+
+.flex-universal-parts
+.products
+> .flex-sub-categories
+> a[href*="19058~19107"]::before,
+
+.flex-universal-parts
+.products
+> .flex-sub-categories
+> a[href*="19058~19117"]::before,
+
+.flex-universal-parts
+.products
+> .flex-sub-categories
+> a[href*="19058~19121"]::before {
+  content: "" !important;
+
+  display: block !important;
+
+  flex: 0 0 44px !important;
+
+  width: 44px !important;
+  height: 44px !important;
+
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: contain !important;
+
+  pointer-events: none !important;
+}
+
+
+/* Motorové oleje */
+
+.flex-universal-parts
+.products
+> .flex-sub-categories
+> a[href*="19058~19106"]::before {
+  background-image:
+    url("https://eshop.auto-lenc.cz/Image.ashx?type=5&id=19106") !important;
+}
+
+
+/* Převodové oleje */
+
+.flex-universal-parts
+.products
+> .flex-sub-categories
+> a[href*="19058~19107"]::before {
+  background-image:
+    url("https://eshop.auto-lenc.cz/Image.ashx?type=5&id=19107") !important;
+}
+
+
+/* Hydraulické oleje */
+
+.flex-universal-parts
+.products
+> .flex-sub-categories
+> a[href*="19058~19117"]::before {
+  background-image:
+    url("https://eshop.auto-lenc.cz/Image.ashx?type=5&id=19117") !important;
+}
+
+
+/* Plastická maziva */
+
+.flex-universal-parts
+.products
+> .flex-sub-categories
+> a[href*="19058~19121"]::before {
+  background-image:
+    url("https://eshop.auto-lenc.cz/Image.ashx?type=5&id=19121") !important;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+
+  .flex-universal-parts
+  .products
+  > .flex-sub-categories {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+
+}
+
+
+/* =========================================================
+   TELEFON
+   2 DLAŽDICE VEDLE SEBE
+   ========================================================= */
 
 @media (max-width: 767px) {
-  .flex-universal-parts .products > .flex-sub-categories {
+
+  .flex-universal-parts
+  .products
+  > .flex-sub-categories {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+
+    gap: 6px !important;
+
+    margin: 8px 0 12px !important;
   }
+
+
+  .flex-universal-parts
+  .products
+  > .flex-sub-categories
+  > a {
+    min-height: 64px !important;
+
+    gap: 7px !important;
+
+    padding: 6px 7px !important;
+
+    font-size: 12.5px !important;
+  }
+
+
+  .flex-universal-parts
+  .products
+  > .flex-sub-categories
+  > a[href*="19058~19106"]::before,
+
+  .flex-universal-parts
+  .products
+  > .flex-sub-categories
+  > a[href*="19058~19107"]::before,
+
+  .flex-universal-parts
+  .products
+  > .flex-sub-categories
+  > a[href*="19058~19117"]::before,
+
+  .flex-universal-parts
+  .products
+  > .flex-sub-categories
+  > a[href*="19058~19121"]::before {
+    flex-basis: 38px !important;
+
+    width: 38px !important;
+    height: 38px !important;
+  }
+
 }
