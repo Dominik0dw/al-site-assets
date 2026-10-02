@@ -125,34 +125,36 @@
       path: ['100013', '100206', '100579'],
       image: 'lozisko.webp'
     },
-    {
-    id: '100453',
-    title: 'Rozvody',
-    path: ['100016', '100085', '100453'],
-    image: imageBase + 'rozvody.webp'
-    },
 
     {
-    id: '100051',
-    title: 'Sada spojky',
-    path: ['100050', '100051'],
-    image: imageBase + 'spojka.webp'
+      id: '100453',
+      title: 'Rozvody',
+      slug: 'sada-rozvodoveho-remene',
+      path: ['100016', '100085', '100453'],
+      image: 'rozvody.webp'
     },
-
     {
-    id: '100571',
-    title: 'Ramena',
-    path: ['100013', '100208', '100571'],
-    image: imageBase + 'ramena.webp'
+      id: '100051',
+      title: 'Sada spojky',
+      slug: 'sada-spojky',
+      path: ['100050', '100051'],
+      image: 'spojka.webp'
     },
-
     {
-    id: '100198',
-    title: 'Čepy řízení',
-    path: ['100012', '100198'],
-    image: imageBase + 'cepy-rizeni.webp'
+      id: '100571',
+      title: 'Ramena',
+      slug: 'pricne-rameno',
+      path: ['100013', '100208', '100571'],
+      image: 'ramena.webp'
+    },
+    {
+      id: '100198',
+      title: 'Čepy řízení',
+      slug: 'klouby',
+      path: ['100012', '100198'],
+      image: 'cepy-rizeni.webp'
     }
-    ];
+  ];
 
   function getTarget() {
     const roots =
