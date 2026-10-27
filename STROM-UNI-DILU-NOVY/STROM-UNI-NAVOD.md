@@ -1,4 +1,4 @@
-# Univerzální díly – hlavní katalog, verze 3
+# Univerzální díly – hlavní katalog, verze 4
 
 Jeden HTML blok obsahuje hlavní stránku, skupiny kategorií, procházení podúrovní zdrojového stromu, vlastní výběr olejů a produktové výpisy ostatního sortimentu.
 
@@ -13,7 +13,7 @@ Jeden HTML blok obsahuje hlavní stránku, skupiny kategorií, procházení pod�
 
 ```html
 <div id="al-uni-mount"><p>Načítáme katalog univerzálních dílů…</p></div>
-<script src="https://dominik0dw.github.io/al-site-assets/STROM-UNI-DILU-NOVY/assets/uni/uni.js?v=3" defer></script>
+<script src="https://dominik0dw.github.io/al-site-assets/STROM-UNI-DILU-NOVY/assets/uni/uni.js?v=4" defer></script>
 ```
 
 7. Uložte článek a obnovte stránku pomocí **Ctrl + F5**.
@@ -22,18 +22,23 @@ Přetahujte složku do kořene repozitáře, nikoliv do již otevřené stejnojm
 
 Na jedné stránce použijte jeden nový blok. Samostatný původní blok olejů na témže článku odstraňte; výběr olejů je již uvnitř nového katalogu. Na jiném článku může původní blok dále fungovat.
 
-Balíček navazuje na původně nahraný katalog. Nemění soubory `catalog/oleje/catalog.json` ani `catalog/oleje/overrides.json`, a tím zachovává vaši původní databázi a případné ruční opravy. Obsahuje i potřebné soubory vylepšení olejů v2, takže předchozí aktualizační ZIP nemusíte nahrávat zvlášť.
+Tento aktualizační balíček navazuje na nahranou verzi 3. Nemění soubory `catalog/oleje/catalog.json` ani `catalog/oleje/overrides.json`, a tím zachovává vaši původní databázi a případné ruční opravy. Přepisuje jen upravené soubory rozhraní a přidává test nové verze. Databázi kategorií i olejů ponechává stávající.
 
-## Co zákazník uvidí
+## Změny ve verzi 4
 
-- Dvanáct hlavních oddílů a samostatné Akce a novinky.
-- Levé menu, drobečkovou navigaci a přepínání dlaždic a seznamu.
-- Hledání kategorií bez ohledu na diakritiku, zkratky a naposledy navštívené kategorie.
-- Vlastní výběr olejů podle viskozity, ACEA, API, balení a dalších doložených parametrů.
-- U dalších kategorií produkty, parametry dostupné ve zdroji, řazení skladem první, ceny bez DPH, dostupnost a napojení na původní košík.
-- Mobilní nabídku kategorií a samostatně rozbalovací filtry.
+- Produkty se zobrazují už u nadřazených kategorií, které ve zdroji poskytují souhrnnou nabídku: oleje, kapaliny, autobaterie, autochemie, autokosmetika, lakování, autopříslušenství, pneuservis a akce. Podkategorie jsou nad produkty; delší výčet lze rozbalit.
+- U složených oddílů je jasně označena právě otevřená zdrojová nabídka. Ostatní zdrojové větve jsou dostupné v horním přepínači. Nejde o sloučení různých zdrojů do jednoho výsledku.
+- Organizační větve, ze kterých původní katalog neotevírá souhrnný produktový výpis, nadále vedou na konkrétní podkategorie. Prázdná větev Motocykly nezastíní kemping a zahradu.
+- Dostupné filtry se načítají spolu s aktuálními výsledky. Podporován je výrobce, typ produktu, všechny doložené hodnotové parametry a číselné rozsahy. U autobaterií například kapacita, startovací proud, rozměry, napětí, polarita a uchycení. Nejsou odhadovány z názvů výrobků.
+- Nulové možnosti se skrývají, vybrané zůstávají odstranitelné. Jediná hodnota se zachová, pokud omezuje nabídku jen na část produktů. Konstantní parametr, který nabídku nijak nezpřesní, se nezobrazuje.
+- Parametry mají vyhledávání; aktivní filtry lze jednotlivě odebírat. Číselné rozsahy mají pole Od/Do a potvrzení tlačítkem, přijímají i desetinnou čárku.
+- Volba parametru vybírá jeho typ produktu. Tím se nekombinují parametry nesouvisejících typů. Volby v jednom hodnotovém filtru znamenají NEBO, různé parametry zvoleného typu znamenají A ZÁROVEŇ.
+- Zůstává řazení skladem první, ceny bez DPH, původní dostupnost a napojení na původní košík. Přibylo řazení podle kódu, výrobce a dostupnosti s cenou.
+- Menu kategorií se otevírá jako překryvný panel s pozadím. Zavře se kliknutím mimo panel, tlačítkem, klávesou Esc nebo výběrem kategorie. Při rozbalování větví drží pozici i ovládání klávesnicí.
+- Filtry při změně výsledků zachovávají rozbalení, vlastní hledání a posun seznamů. Zadané množství stejného produktu a dodavatele se při filtrování zachovává. Zpožděná odpověď nepřepíše novější výběr.
+- Při otevření produktové kategorie se produkty a chybějící podkategorie načítají nezávisle. Úvodní stránka nadále načítá jen konfiguraci a strom.
 
-Rozložení vychází z principů katalogu Auto Kelly. Barvy a obsah odpovídají Auto Lenc. Nejsou načítány žádné vlastní fonty.
+Nejsou načítány vlastní fonty. Barvy odpovídají Auto Lenc. Mobil má samostatné otevření filtrů a tlačítko pro návrat k produktům.
 
 ## Dvanáct hlavních oddílů
 
@@ -70,7 +75,7 @@ Akce a novinky používají větev 19057. Oddělovač 19223 a pracovní větev O
 
 ## Data a aktuálnost
 
-Přiložená databáze obsahuje **4 051 kategorií** a všech **31 hlavních zdrojových větví**. U **1 585 větví** ještě nejsou jejich další potomci v souboru. Rozhraní je automaticky načte při rozkliknutí přímo z původního e-shopu; nedává tyto větve omylem do produktového výpisu. Velký zdrojový strom tedy není celý zkopírovaný na GitHub. Číselník obsahuje názvy, vztahy kategorií a původní odkazy.
+Přiložená databáze obsahuje **4 051 kategorií** a všech **31 hlavních zdrojových větví**. U **1 585 větví** ještě nejsou jejich další potomci v souboru. Rozhraní je automaticky načte při rozkliknutí přímo z původního e-shopu; existenci dalších potomků nezaměňuje za koncovou kategorii. Produktový výpis se přitom u podporovaných nadřazených větví načítá nezávisle na podkategoriích. Velký zdrojový strom tedy není celý zkopírovaný na GitHub. Číselník obsahuje názvy, vztahy kategorií a původní odkazy.
 
 Rychlé hledání prohledává již načtené kategorie. Tlačítko **Prohledat celý strom kategorií** vyvolá původní hledání e-shopu. Sdílený odkaz obsahuje i cestu k hluboké kategorii, aby ji šlo znovu načíst po otevření odkazu v jiném prohlížeči. Číslo položek na dlaždici je orientační stav při exportu, nikoliv počet právě skladem. Po otevření produktů se nabídka načítá z e-shopu.
 
@@ -86,7 +91,7 @@ Po nahrání otevřete `STROM-UNI-DILU-NOVY/nahled-stromu.html` na GitHub Pages.
 
 Pro náhled na počítači spusťte ve složce projektu `python -m http.server 8000` a otevřete `http://localhost:8000/nahled-stromu.html`. Otevírání souboru dvojklikem není vhodné kvůli načítání JSON souborů.
 
-Vizuální kontrola nového rozhraní v prohlížeči zde nebyla dokončena. Logika byla ověřena v DOM testech; vzhled na konkrétním článku a skutečný košík ověřte po nasazení.
+Zdrojové stránky kapalin a autobaterií včetně jejich parametrů byly ověřeny v prohlížeči. Nové rozhraní prošlo DOM testy navigace, filtrů, rozsahů, překryvného menu, rychlého přepínání, chyb, sdílených odkazů a návaznosti na oleje. Náhledový server pro vizuální kontrolu nového rozhraní nebyl v pracovním prostředí dostupný. Vzhled vložený do konkrétního článku a skutečné přidání do živého košíku zbývá ověřit po nasazení.
 
 ## Obnovení stromu po změnách e-shopu
 

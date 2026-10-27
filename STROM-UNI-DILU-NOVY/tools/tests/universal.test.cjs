@@ -5,38 +5,40 @@ Object.defineProperty(HTMLSelectElement.prototype,'value',{configurable:true,get
 const pause=ms=>new Promise(r=>setTimeout(r,ms));
 const fixture={HTMLContent:`<div class="flex-item" id="ProductItem_14218293" data-flex-group-id="14218293"><div class="flex-header-container"><h2><a href="/cs/katalog/univerzalni-dily/pneuservis-montazni-pasty/stetec-montazni-pasta-na-pneumatiky/energy/ne00896/19322~19326/14218293"><span class="manufacturer-code"><span class="manufacturer">ENERGY</span><span class="code">NE00896</span></span><span class="name">štětec, montážní pasta na pneumatiky</span></a></h2></div><div class="flex-image-wrapper"><img data-flex-async-image-src="https://example.test/brush.jpg"></div><div class="flex-delivery-time-item"><div class="flex-total-amount flex-on-the-way">&gt; 10 ks</div><span class="flex-delivery-to-time-text">Pozítří</span><div class="flex-price"><span class="flex-value">54,99</span><span class="flex-currency">Kč</span></div><div class="flex-price-with-vat"><span class="flex-value">66,54</span></div><div class="flex-add-to-basket" data-flex-product-id="14273740"><div class="flex-basket-spinner" data-flex-spinner-step="1"></div><button onclick="addToBasket(this, '#ProductItem_14218293', 'NE00896', 14218293, 14273740, '14273740;SORT_1_1_0_0_000000034,371_000000014273740~15334935;SORT_1_1_0_0_000000038,131_000000015334935', amountValue, 0, '', 'Pneuservis Montážní pasty ', 'universal-parts', false, false, false, 'product-category', 1, 'Pozítří (Osobní odběr od 8:00 do 18:00)', 0, true, [-1, -1, ]);"></button></div></div></div>`,
 FilterHTMLContent:`<span class="flex-product-count-value">42 položek</span><div data-products-manufacturers-filters><label title="ENERGY"><input type="checkbox" value="123" data-products-manufacturers-filter-item data-flex-toogle-text="ENERGY (25)"><span class="label"><span>ENERGY</span></span></label><label title="TIPTOPOL"><input type="checkbox" value="456" data-products-manufacturers-filter-item data-flex-toogle-text="TIPTOPOL (17)"><span class="label"><span>TIPTOPOL</span></span></label></div><div data-attribute><span data-title data-flex-generic-article-key="PASTA" data-flex-attribute-key="SIZE">Balení</span><input type="checkbox" value="3 kg" data-products-parameters-filter-item data-flex-attribute-value="3" data-flex-params-count="25"><input type="checkbox" value="5 kg" data-products-parameters-filter-item data-flex-attribute-value="5" data-flex-params-count="17"><input type="checkbox" value="99 kg" data-products-parameters-filter-item data-flex-attribute-value="99" data-flex-params-count="0"></div>`,IsLastPage:false};
-async function boot(shop=true){
+async function boot(shop=true,options={}){
  const {document,window:dom}=parseHTML('<html><head></head><body><div id="al-uni-mount"></div></body></html>');
- let currentScript={src:'https://example.github.io/STROM-UNI-DILU-NOVY/assets/uni/uni.js?v=3'};
+ let currentScript={src:'https://example.github.io/STROM-UNI-DILU-NOVY/assets/uni/uni.js?v=4'};
  Object.defineProperty(document,'currentScript',{get(){return currentScript;}});
  let location=new URL((shop?'https://eshop.auto-lenc.cz':'https://example.github.io')+'/cs/clanek/test');
- const events={},requests=[],calls=[],historyEntries=[];let fail=false;
+ const events={},requests=[],calls=[],historyEntries=[],queue=[];let fail=false,responseFixture=fixture;
+ Object.defineProperty(document,'activeElement',{get(){return document._testFocused;}});
+ dom.HTMLElement.prototype.focus=function(){this.ownerDocument._testFocused=this;};
  const window={addToBasket:(...a)=>calls.push(a),addEventListener:(event,cb)=>(events[event]||=[]).push(cb)};
  const history={replaceState(a,b,url){location.href=new URL(url,location).href;},pushState(a,b,url){historyEntries.push(location.href);location.href=new URL(url,location).href;}};
  const treeHTML='<div id="Node_8198" class="node"><div class="wrapper"><a href="/cs/katalog/univerzalni-dily/testovaci-vetev/6691~7554~8198~99999991/?root=-1&amp;path=6691~7554~8198~99999991" data-node-id="99999991" data-full-category-ids-path="6691~7554~8198~99999991"><span class="name">Testovací větev</span><span class="items-count">1</span></a></div></div>';
- const fetch=async(input,options={})=>{const url=new URL(input);requests.push([url,options]);if(url.pathname.endsWith('GetUniversalPartsSubcategories'))return{ok:!fail,status:fail?503:200,json:async()=>({ItemsHTMLContent:treeHTML})};if(url.pathname.endsWith('GetUniversalPartsBySearchPhrase2'))return{ok:!fail,text:async()=>treeHTML};if(url.pathname.endsWith('GetUniversalPartsProducts')){const body=JSON.parse(options.body);if(body.categoryID==='19058')return{ok:true,json:async()=>({HTMLContent:'',FilterHTMLContent:'',IsLastPage:true})};return{ok:!fail,status:fail?503:200,json:async()=>fixture};}if(url.pathname.startsWith('/cs/katalog/'))return{ok:false,status:404};const local=url.pathname.replace('/STROM-UNI-DILU-NOVY','');return{ok:true,json:async()=>JSON.parse(fs.readFileSync(root+local,'utf8'))};};
+ const fetch=async(input,init={})=>{const url=new URL(input);requests.push([url,init]);if(url.pathname.endsWith('GetUniversalPartsSubcategories')){if(options.treeDelay)await pause(options.treeDelay);return{ok:!fail,status:fail?503:200,json:async()=>({ItemsHTMLContent:treeHTML})};}if(url.pathname.endsWith('GetUniversalPartsBySearchPhrase2'))return{ok:!fail,text:async()=>treeHTML};if(url.pathname.endsWith('GetUniversalPartsProducts')){const body=JSON.parse(init.body);if(body.categoryID==='19058')return{ok:true,json:async()=>({HTMLContent:'',FilterHTMLContent:'',IsLastPage:true})};const queued=queue.shift(),data=queued?.data||responseFixture;if(queued?.delay)await pause(queued.delay);return{ok:!fail,status:fail?503:200,json:async()=>data};}if(url.pathname.startsWith('/cs/katalog/'))return{ok:false,status:404};const local=url.pathname.replace('/STROM-UNI-DILU-NOVY','');return{ok:true,json:async()=>{const data=JSON.parse(fs.readFileSync(root+local,'utf8'));if(options.canonicalPending&&data.nodes)data.nodes['8198'].url='https://eshop.auto-lenc.cz/cs/katalog/univerzalni-dily/mazda/6691~7554~8198/?root=-1&path=6691~7554~8198';return data;}};};
  const sandbox={window,document,location,history,fetch,Event:dom.Event,DOMParser,URL,URLSearchParams,AbortController,setTimeout,clearTimeout,navigator:{},localStorage:{getItem(){return null;},setItem(){}},Intl,Map,Set,Promise};
  vm.createContext(sandbox);const append=document.head.append.bind(document.head);
  document.head.append=el=>{append(el);if(el.tagName==='SCRIPT')queueMicrotask(()=>{const before=currentScript;currentScript=el;try{const local=new URL(el.src).pathname.replace('/STROM-UNI-DILU-NOVY','');vm.runInContext(fs.readFileSync(root+local,'utf8'),sandbox);el.onload?.();}catch(e){el.onerror?.(e);}finally{currentScript=before;}});};
  vm.runInContext(fs.readFileSync(root+'/assets/uni/uni.js','utf8'),sandbox);await pause(30);
  const click=sel=>{const el=document.querySelector(sel);assert.ok(el,'Missing '+sel);el.dispatchEvent(new dom.Event('click',{bubbles:true,cancelable:true}));};
  const change=sel=>{const el=document.querySelector(sel);assert.ok(el,'Missing '+sel);el.onchange?.({target:el,currentTarget:el});};
- return{document,location,window,requests,calls,click,change,setFail:v=>fail=v,hash(hash){location.hash=hash;for(const cb of events.hashchange||[])cb();},back(){location.href=historyEntries.pop();for(const cb of events.popstate||[])cb();}};
+ return{document,location,window,requests,calls,click,change,setFixture:v=>responseFixture=v,queue:(delay,data)=>queue.push({delay,data}),key(key,shiftKey=false){const e=new dom.Event('keydown',{bubbles:true,cancelable:true});e.key=key;e.shiftKey=shiftKey;document.querySelector('#al-uni').dispatchEvent(e);return e;},setFail:v=>fail=v,hash(hash){location.hash=hash;for(const cb of events.hashchange||[])cb();},back(){location.href=historyEntries.pop();for(const cb of events.popstate||[])cb();}};
 }
-(async()=>{
+async function baseline(){
  const app=await boot();const d=app.document;
  assert.equal(d.querySelectorAll('.au-category-grid .au-category-card').length,12);
  assert.equal(app.requests.length,2,'home loads only tree and configuration');
  assert.equal(d.querySelector('.ao-product'),null,'oil database must be lazy');
  app.click('.au-category-grid [data-route="g:kapaliny"]');
  assert.ok(d.querySelector('.au-breadcrumb').textContent.includes('Provozní kapaliny'));
- app.click('[data-view="list"]');assert.ok(d.querySelector('.au-category-grid').classList.contains('is-list'));
+ await pause(30);assert.ok(d.querySelector('.au-product'),'parent category shows products immediately');assert.ok(d.querySelector('.au-subcategory-grid [data-route="n:19127"]'));assert.equal(new URLSearchParams(app.location.hash.slice(1)).get('uni'),'n:19050');
  const search=d.querySelector('.au-search input');search.value='adblue';search.oninput();await pause(170);
  assert.ok(d.querySelectorAll('.au-search-results a').length>0);
  for(const a of d.querySelectorAll('.au-search-results a'))assert.match(a.textContent,/adblue/i);
  app.click('.au-search-clear');assert.equal(search.value,'');
  app.hash('#uni=n%3A19326');await pause(40);
- const req=app.requests.find(([url])=>url.pathname.endsWith('GetUniversalPartsProducts'));
+ const req=app.requests.findLast(([url])=>url.pathname.endsWith('GetUniversalPartsProducts'));
  const body=JSON.parse(req[1].body);assert.equal(body.categoryID,'19322~19326');assert.equal(body.fullCategoryIDs,'19322~19326');assert.equal(body.sortBy,'4');assert.equal(body.category,'pneuservis-montazni-pasty');assert.equal(body.itemsCount,'20');
  assert.equal(d.querySelectorAll('.au-product').length,1);assert.match(d.querySelector('.au-price').textContent,/54,99/);assert.doesNotMatch(d.querySelector('.au-price').textContent,/66,54/);assert.equal(d.querySelector('.au-tax').textContent,'bez DPH');assert.match(d.querySelector('.au-stock').textContent,/Dostupné k dodání/);
  assert.equal(d.querySelector('[data-key="PASTA|SIZE"][value="99"]'),null);
@@ -60,4 +62,6 @@ async function boot(shop=true){
  const preview=await boot(false);preview.hash('#uni=n%3A19326');await pause(30);assert.ok(preview.document.querySelector('.au-empty a.au-primary'));assert.equal(preview.requests.filter(([u])=>u.pathname.endsWith('GetUniversalPartsProducts')).length,0);
  preview.hash('#uni=n%3A8198');await pause(25);assert.match(preview.document.querySelector('.au-page').textContent,/Další podkategorie najdete na e-shopu/);
  console.log('PASS: 12 category groups, search, grid/list, nested routes, full category paths, server filters, zero-value pruning, net prices, quantity/cart spy, pagination, oil hash integration, back, API failure/retry external preview, lazy subcategories, deep shared links, full-tree search and tree retry. No live cart request.');
-})().catch(e=>{console.error(e);process.exitCode=1;});
+}
+module.exports={boot,fixture,pause};
+if(require.main===module)baseline().catch(e=>{console.error(e);process.exitCode=1;});
