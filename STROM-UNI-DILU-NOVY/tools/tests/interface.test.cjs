@@ -9,7 +9,7 @@ const script = fs.readFileSync(path.join(root, 'assets/oleje/oleje.js'), 'utf8')
 async function preview(hash = '', failure = false) {
   const nodes = new Map();
   const element = selector => {
-    if (!nodes.has(selector)) nodes.set(selector, { innerHTML: '', textContent: '', value: '', setAttribute() {}, scrollIntoView() {} });
+    if (!nodes.has(selector)) nodes.set(selector, { innerHTML: '', textContent: '', value: '', dataset: {}, setAttribute() {}, scrollIntoView() {} });
     return nodes.get(selector);
   };
   const app = { innerHTML: '', querySelector: element, querySelectorAll: () => [], classList: { toggle: () => true } };
@@ -23,7 +23,7 @@ async function preview(hash = '', failure = false) {
   let replaced = '';
   const sandbox = { document, location, URL, URLSearchParams, Intl, Set, Map, Promise, AbortController, setTimeout, clearTimeout,
     window: { addEventListener() {} }, history: { replaceState: (_, __, url) => { replaced = url; } },
-    fetch: async url => ({ ok: !failure, status: failure ? 404 : 200, json: async () => url.pathname.endsWith('config.json') ? config : url.pathname.endsWith('overrides.json') ? { products: {} } : catalog }) };
+    fetch: async url => ({ ok: !failure, status: failure ? 404 : 200, json: async () => url.pathname.endsWith('config.json') ? config : url.pathname.endsWith('overrides.json') ? { products: {} } : url.pathname.endsWith('availability-order.json') ? JSON.parse(fs.readFileSync(path.join(root, 'catalog/oleje/availability-order.json'), 'utf8')) : catalog }) };
   vm.runInNewContext(script, sandbox);
   await new Promise(resolve => setTimeout(resolve, 20));
   return { app, nodes, replaced };

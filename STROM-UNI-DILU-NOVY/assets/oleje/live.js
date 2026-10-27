@@ -38,25 +38,27 @@
     return args;
   }
   const txt = node => (node?.textContent || '').replace(/\s+/g, ' ').trim();
-  function extract(document, product) {
-    const roots = Array.from(document.querySelectorAll('.flex-item[data-flex-group-id]'));
-    const root = document.getElementById('ProductItem_' + product.id) || roots.find(n => String(n.dataset.flexGroupId) === String(product.id));
+  function extract(document, product, suppliedRoot) {
+    const root = suppliedRoot || document.getElementById('ProductItem_' + product.id) || Array.from(document.querySelectorAll('.flex-item[data-flex-group-id]')).find(n => String(n.dataset.flexGroupId) === String(product.id));
     if (!root) throw Error('Detail neodpovídá produktu.');
     const actualCode = txt(root.querySelector('.manufacturer-code .code'));
     if (actualCode && actualCode !== product.code) throw Error('Objednací číslo se liší.');
-    let widget, args, supplier;
+    let widget, args, supplier, bestScore = Infinity;
     for (const candidate of root.querySelectorAll('.flex-add-to-basket')) {
       const button = candidate.querySelector('[onclick*="addToBasket("]');
       if (!button) continue;
       try {
         const parsed = parseArguments(button.getAttribute('onclick'));
         if (String(parsed[3]) !== String(product.id) || parsed[2] !== product.code || String(parsed[4]) !== candidate.dataset.flexProductId) continue;
-        widget = candidate; args = parsed; supplier = candidate.closest('.flex-delivery-time-item') || root; break;
+        const offer = candidate.closest('.flex-delivery-time-item') || root;
+        const amount = offer.querySelector('.flex-total-amount');
+        const score = amount?.classList.contains('flex-on-stock') ? 0 : amount?.classList.contains('flex-on-the-way') ? 1 : 2;
+        if (score < bestScore) { widget = candidate; args = parsed; supplier = offer; bestScore = score; }
       } catch (_) {}
     }
     supplier ||= root.querySelector('.flex-delivery-time-item') || root;
-    const price = txt(supplier.querySelector('.flex-price-with-vat .flex-value'));
-    const currency = txt(supplier.querySelector('.flex-price-with-vat .flex-currency'));
+    const price = txt(supplier.querySelector('.flex-price .flex-value'));
+    const currency = txt(supplier.querySelector('.flex-price .flex-currency'));
     const stockNode = supplier.querySelector('.flex-total-amount');
     const stockValue = txt(stockNode);
     const onStock = stockNode?.classList.contains('flex-on-stock') || false;
@@ -67,7 +69,7 @@
     const step = Number((spinner?.dataset.flexSpinnerStep || '').replace(',', '.'));
     if (!Number.isFinite(step) || step <= 0) args = undefined;
     if (args) args[18] = false;
-    return { price, currency, stock, onStock, delivery, args, step: step > 0 ? step : 1, productId: widget?.dataset.flexProductId };
+    return { price, currency, stock, onStock, onWay, delivery, args, step: step > 0 ? step : 1, productId: widget?.dataset.flexProductId };
   }
   function add(button, row, live, quantity) {
     const amount = Number(String(quantity).replace(',', '.'));
@@ -77,5 +79,20 @@
     args[0] = button; args[1] = '#' + row.id; args[6] = String(amount); args[18] = false;
     window.addToBasket.apply(window, args);
   }
-  window.AutoLencOilLive = { parseArguments, extract, add };
+  async function stockCatalog(config, signal) {
+    const response = await fetch(new URL('/LegacyEshop/AjaxWSLegacy/GetUniversalPartsProducts', config.shop_origin), {
+      method: 'POST', credentials: 'same-origin', signal,
+      headers: { 'Content-Type': 'application/json; charset=utf-8' },
+      body: JSON.stringify({ sortBy: '4', onStockOnly: 'true', purchasePricePriorized: 'false', viewMode: '0', filteredManufacturers: [], parametersFilterQuery: '', parametersFilterRangeQuery: '', categoryID: '19058', fullCategoryIDs: '19058', rootCategoryID: '-1', category: 'oleje-a-maziva', itemsCount: '-1', areHiddenGroupsVisible: 'false', loadAllItems: 'true', page: '1' })
+    });
+    if (!response.ok) throw Error('Dostupnost se nepodařilo aktualizovat.');
+    let data = await response.json();
+    if (typeof data === 'string') data = JSON.parse(data);
+    if (!data || typeof data.HTMLContent !== 'string' || data.IsLastPage !== true) throw Error('Neúplný přehled skladu.');
+    const doc = new DOMParser().parseFromString(data.HTMLContent, 'text/html');
+    const rows = Array.from(doc.querySelectorAll('.flex-item[data-flex-group-id]'));
+    const entries = rows.map(row => ({ id: row.dataset.flexGroupId, code: txt(row.querySelector('.manufacturer-code .code')), root: row }));
+    return { entries, doc };
+  }
+  window.AutoLencOilLive = { parseArguments, extract, add, stockCatalog };
 })();

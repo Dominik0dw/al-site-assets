@@ -37,7 +37,7 @@ const window = { addToBasket: (...args) => calls.push(args) };
 vm.runInNewContext(fs.readFileSync(path.join(__dirname, '../../assets/oleje/live.js'), 'utf8'), { window });
 const adapter = window.AutoLencOilLive;
 const live = adapter.extract(document, { id: '2941184', code: '113430' });
-assert.equal(live.price, '1 234,50');
+assert.equal(live.price, '1 000,00');
 assert.equal(live.currency, 'Kč');
 assert.equal(live.onStock, true);
 assert.match(live.stock, /7/);

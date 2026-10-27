@@ -13,6 +13,8 @@ import urllib.error
 import urllib.parse
 import urllib.request
 import uuid
+import subprocess
+import sys
 from lxml import html
 
 SOURCE='https://eshop.auto-lenc.cz/cs/katalog/univerzalni-dily/oleje-a-maziva/19058/?root=-1&path=19058'
@@ -187,6 +189,7 @@ def main():
              'source_policy':'Catalog parameters are attributed to Auto Lenc, not manufacturer-verified. Approvals and recommendations remain separate.',
              'products':normalized}
     dump(ROOT/'catalog/oleje/catalog.json',payload);dump(ROOT/'catalog/oleje/audit.json',audit)
+    subprocess.run([sys.executable,str(ROOT/'tools/build_index.py')],check=True)
     print(json.dumps({'count':len(normalized),'coverage':coverage,'detail_errors':len(audit['details_failed']),'needs_review':len(audit['needs_review'])}),flush=True)
 
 if __name__=='__main__':main()

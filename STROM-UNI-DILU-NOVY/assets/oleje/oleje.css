@@ -104,3 +104,105 @@
 @media(max-width:760px){#al-oils .ao-buy{display:block}#al-oils .ao-live{align-items:flex-start}#al-oils .ao-cart{width:180px}#al-oils .ao-detail{margin-top:8px}}
 
 #al-oils input.ao-facet-search{display:block;width:calc(100% - 30px);height:32px;margin:0 15px 10px;padding:6px 8px;border:1px solid #dfe4e9;border-radius:5px;background:#fff;color:#475569;font-size:10px}
+#al-oils .ao-icon{display:inline-block;width:24px;height:24px;flex-shrink:0;vertical-align:middle}
+#al-oils .ao-head{padding-bottom:18px;margin-bottom:18px}
+#al-oils .ao-categories{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin-bottom:26px}
+#al-oils .ao-category{display:flex;align-items:center;gap:12px;min-height:76px;padding:13px 16px;border:1px solid #dfe4ea;border-radius:10px;background:#fff;color:#485666;text-align:left;transition:border-color .15s,background .15s}
+#al-oils .ao-category>.ao-icon{width:29px;height:29px;color:#65768a}
+#al-oils .ao-category>span{display:flex;flex-direction:column;gap:3px;min-width:0}
+#al-oils .ao-category strong{font-size:12px;line-height:1.35;color:#263342}
+#al-oils .ao-category small{font-size:10px;color:#768393}
+#al-oils .ao-category:hover,#al-oils .ao-category.is-active{border-color:var(--ao-red);background:#fff6f7}
+#al-oils .ao-category.is-active>.ao-icon,#al-oils .ao-category.is-active strong{color:var(--ao-red)}
+#al-oils .ao-layout{grid-template-columns:225px minmax(0,1fr);gap:22px}
+#al-oils .ao-sidebar{border-radius:10px}
+#al-oils .ao-facet summary{font-size:12px;padding:14px 15px}
+#al-oils .ao-option{border-radius:5px}
+#al-oils label.ao-option{padding:6px 0;font-size:11px}
+#al-oils .ao-viscosities{gap:7px;margin-bottom:12px}
+#al-oils button.ao-viscosity{min-height:52px;background:#f8fafc;border-color:#e4e9ee}
+#al-oils .ao-advisors{display:block;padding:0;margin:0 0 16px;border:0;background:none}
+#al-oils .ao-advisors summary{font-size:11px;color:#5a6879;cursor:pointer;padding:5px 0}
+#al-oils .ao-advisors>div{padding-top:10px}
+#al-oils .ao-searchbar{display:flex;align-items:center;gap:10px;min-height:46px;padding:0 14px;border:1px solid #d6dee7;border-radius:9px;background:#fff;margin-bottom:16px;box-shadow:0 2px 5px #152b4510}
+#al-oils .ao-searchbar .ao-icon{width:19px;height:19px;color:#8b98a7}
+#al-oils .ao-searchbar input{width:100%;min-width:0;height:44px;padding:8px 0;margin:0;border:0;border-radius:0;outline:0;background:transparent;color:#273747;font-size:13px;box-shadow:none}
+#al-oils .ao-searchbar:focus-within{border-color:var(--ao-red);box-shadow:0 0 0 2px #e2001a12}
+#al-oils .ao-toolbar{margin-bottom:10px}
+#al-oils .ao-count{font-size:13px;color:#283848}
+#al-oils .ao-controls select{font-size:11px;background:#f7f9fb;border-color:#e1e6ec}
+#al-oils .ao-small-button{font-size:10px}
+#al-oils .ao-refresh:disabled{opacity:.55;cursor:wait}
+#al-oils .ao-sync-status{display:flex;align-items:center;gap:7px;font-size:10px;color:#758392;margin:0 0 13px;min-height:17px}
+#al-oils .ao-sync-status[data-state=loading]:before{content:"";width:10px;height:10px;border:2px solid #dce3e9;border-top-color:var(--ao-red);border-radius:50%;animation:ao-spin .9s linear infinite}
+#al-oils .ao-sync-status[data-state=ready]:before{content:"";width:6px;height:6px;border-radius:50%;background:#248a52}
+#al-oils .ao-list{border:0;border-radius:0;background:transparent;overflow:visible;display:grid;gap:12px}
+#al-oils .ao-list-head{grid-template-columns:108px minmax(0,1fr) 190px;padding:10px 17px;margin-bottom:8px;border:0;border-radius:7px;background:#f1f4f7;color:#647487;font-weight:650;font-size:10px;gap:18px}
+#al-oils .ao-product{grid-template-columns:108px minmax(0,1fr) 190px;gap:18px;padding:18px 16px;border:1px solid #e0e6ed;border-radius:11px;background:#fff;box-shadow:0 2px 5px #1f354b08;transition:border-color .15s,box-shadow .15s}
+#al-oils .ao-product:last-child{border-bottom:1px solid #e0e6ed}
+#al-oils .ao-product:hover{border-color:#bdcbd9;background:#fff;box-shadow:0 3px 10px #1f354b0c}
+#al-oils .ao-product.is-stock{border-left:3px solid #278954;padding-left:14px}
+#al-oils .ao-image{position:relative;display:grid;place-items:center;align-self:start;min-height:140px;width:100%;padding:6px;border:1px solid #edf0f4;border-radius:9px;background:#fafbfc;overflow:hidden}
+#al-oils .ao-image img{position:relative;z-index:1;max-width:100%;width:100%;height:130px;object-fit:contain;border-radius:5px;background:#fff}
+#al-oils .ao-image-placeholder{position:absolute;inset:0;display:grid;place-items:center;color:#9ba8b7}
+#al-oils .ao-image-placeholder .ao-icon{width:39px;height:39px;stroke-width:1.3}
+#al-oils .ao-image.is-missing{background:#f2f5f8}
+#al-oils .ao-product-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:7px;font-size:10px;color:#7c8998}
+#al-oils .ao-brand{display:inline-flex;padding:3px 7px;border-radius:4px;background:#fff0f2;color:#ce0018;font-size:9px;line-height:1.4;font-weight:750;letter-spacing:.4px}
+#al-oils h3{font-size:15px;line-height:1.45;letter-spacing:0;margin:0 0 6px;font-weight:750}
+#al-oils .ao-code{font-size:10px;margin:0 0 12px;color:#85909e}
+#al-oils .ao-code strong{color:#5f6e7e;font-weight:600}
+#al-oils .ao-primary-specs{display:flex;gap:19px;margin:0 0 12px}
+#al-oils .ao-primary-spec{display:flex;flex-direction:column;gap:1px;padding-right:18px;border-right:1px solid #e8edf2}
+#al-oils .ao-primary-spec:last-child{padding-right:0;border:0}
+#al-oils .ao-primary-spec small{font-size:9px;color:#7d8997}
+#al-oils .ao-primary-spec strong{font-size:15px;color:#334557;line-height:1.3}
+#al-oils .ao-spec{padding:3px 6px;background:#f0f4f8;color:#465d72;border:1px solid #e7edf3;border-radius:4px;font-size:10px}
+#al-oils .ao-spec:first-child{background:#f0f4f8;color:#465d72;font-weight:400}
+#al-oils .ao-spec small{font-size:8px;color:#8794a3}
+#al-oils .ao-oem{font-size:10px;line-height:1.6;margin:6px 0;color:#718091}
+#al-oils .ao-oem>span{color:#ba0017;white-space:nowrap}
+#al-oils .ao-parameters{margin-top:11px;font-size:10px}
+#al-oils .ao-parameters>summary{display:inline-flex;align-items:center;gap:12px;color:#4e6177;list-style:none;font-weight:600}
+#al-oils .ao-parameters>summary::-webkit-details-marker{display:none}
+#al-oils .ao-parameters>summary span{color:#a5b2be;font-size:15px;font-weight:400}
+#al-oils .ao-parameters[open]>summary span{transform:rotate(45deg)}
+#al-oils .ao-buy{padding:12px;background:#f7f9fc;border:1px solid #edf1f5;border-radius:9px;align-self:start;min-width:0}
+#al-oils .ao-live{gap:4px}
+#al-oils .ao-price{display:block;font-size:23px;line-height:1.3;color:#24374a;white-space:nowrap;letter-spacing:-.5px;margin-top:5px}
+#al-oils .ao-price small{font-size:13px;font-weight:600;letter-spacing:0}
+#al-oils .ao-price-note{font-size:10px;margin:0;color:#8390a0}
+#al-oils .ao-stock{display:flex;align-items:center;justify-content:flex-end;gap:4px;font-size:10px;line-height:1.4;margin:0 0 5px;color:#7b6c48}
+#al-oils .ao-stock .ao-icon{width:15px;height:15px}
+#al-oils .ao-stock.is-stock{color:#20824c}
+#al-oils .ao-delivery{font-size:9px;line-height:1.5;color:#708195;margin:3px 0 4px}
+#al-oils .ao-cart{gap:7px;margin:8px 0 0}
+#al-oils .ao-quantity{display:grid;grid-template-columns:32px minmax(0,1fr) 32px;height:33px;border:1px solid #d8e1eb;border-radius:5px;overflow:hidden;background:#fff;float:none;width:100%}
+#al-oils .ao-quantity input{width:100%;min-width:0;height:31px;margin:0;padding:4px 0;border:0;border-radius:0;box-shadow:none;color:#394d62;text-align:center;font-size:12px;appearance:textfield}
+#al-oils .ao-quantity input::-webkit-inner-spin-button,#al-oils .ao-quantity input::-webkit-outer-spin-button{appearance:none;margin:0}
+#al-oils .ao-quantity button{height:31px;border:0;padding:0;background:#f6f8fb;color:#536a80;font-size:17px;line-height:1}
+#al-oils .ao-quantity button:hover{background:#eaf0f6}
+#al-oils .ao-cart-button{display:flex;justify-content:center;align-items:center;gap:7px;min-height:38px;padding:9px 5px;font-size:12px;border-radius:6px}
+#al-oils .ao-cart-button .ao-icon{width:17px;height:17px}
+#al-oils .ao-cart-button:hover{background:#be0016}
+#al-oils a.ao-detail,#al-oils a.ao-detail:visited{margin-top:7px;padding:5px 0;min-width:0;border:0;background:transparent;color:#687e94;font-size:10px}
+#al-oils .ao-cart-status{font-size:9px;color:#667b8e}
+#al-oils .ao-cart-status:empty{display:none}
+#al-oils .ao-skeleton{display:grid;gap:10px;min-height:130px;align-content:start;padding-top:5px}
+#al-oils .ao-skeleton i{display:block;height:14px;border-radius:4px;background:#e4eaf1;animation:ao-pulse 1.4s ease-in-out infinite alternate}
+#al-oils .ao-skeleton i:nth-child(2){height:26px;width:82%;justify-self:end}
+#al-oils .ao-skeleton i:nth-child(3){height:37px;margin-top:17px;background:#e7edf3}
+#al-oils .ao-empty{display:flex;align-items:center;flex-direction:column;gap:12px;padding:45px 20px;border:1px dashed #d7e0e8;border-radius:12px;background:#f8fafc}
+#al-oils .ao-empty>.ao-icon{width:33px;height:33px;color:#a7b4c1}
+#al-oils .ao-empty strong{font-size:14px;color:#4b6074}
+#al-oils .ao-empty span{font-size:12px;color:#8392a0}
+#al-oils .ao-empty-reset{padding:9px 14px;margin-top:4px;border:1px solid #d5dee7;border-radius:6px;background:#fff;color:#455e75}
+@keyframes ao-spin{to{transform:rotate(360deg)}}
+@keyframes ao-pulse{from{opacity:.45}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){#al-oils *,#al-oils *:before{animation:none!important;transition:none!important}}
+@media(min-width:1250px){#al-oils .ao-categories{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:1100px){#al-oils .ao-layout{grid-template-columns:205px minmax(0,1fr);gap:16px}#al-oils .ao-product,#al-oils .ao-list-head{grid-template-columns:78px minmax(0,1fr) 165px;gap:12px}#al-oils .ao-buy{padding:10px}#al-oils .ao-price{font-size:21px}#al-oils .ao-image{min-height:115px}#al-oils .ao-image img{height:100px}#al-oils .ao-category{padding:12px;gap:9px}}
+@media(max-width:800px){#al-oils .ao-layout{grid-template-columns:1fr}#al-oils .ao-sidebar{display:none}#al-oils.ao-filters-open .ao-sidebar{display:block}#al-oils .ao-mobile-filters{display:block;width:100%;margin-bottom:14px;padding:11px;border:1px solid #dce4ec;border-radius:7px;background:#f7f9fc;color:#3e5368}#al-oils .ao-categories{grid-template-columns:repeat(2,minmax(0,1fr));margin-bottom:20px}#al-oils .ao-category{min-height:67px}#al-oils .ao-list-head{display:none}}
+@media(max-width:600px){#al-oils .ao-product{grid-template-columns:70px minmax(0,1fr);padding:14px;gap:12px}#al-oils .ao-product.is-stock{padding-left:12px}#al-oils h3{font-size:14px}#al-oils .ao-buy{grid-column:1/-1;display:block;padding:12px;text-align:left}#al-oils .ao-live{display:grid;grid-template-columns:minmax(0,1fr) 145px;gap:3px 12px;align-items:start}#al-oils .ao-stock,#al-oils .ao-price,#al-oils .ao-price-note,#al-oils .ao-delivery{grid-column:1;justify-content:flex-start;width:auto}#al-oils .ao-stock{font-size:9px}#al-oils .ao-cart{grid-column:2;grid-row:1/span 5;width:auto;margin:0}#al-oils .ao-cart-status{grid-column:1/-1}#al-oils .ao-detail{justify-content:flex-start}#al-oils .ao-price{font-size:21px}#al-oils .ao-skeleton{grid-column:1/-1;width:100%;min-height:100px}#al-oils .ao-category>.ao-icon{width:24px;height:24px}#al-oils .ao-category strong{font-size:11px}#al-oils .ao-controls{gap:6px}#al-oils .ao-controls select{flex:1}#al-oils .ao-sync-status{font-size:9px}#al-oils .ao-primary-specs{gap:13px}#al-oils .ao-primary-spec{padding-right:12px}}
+
+@media(min-width:601px) and (max-width:800px){#al-oils .ao-buy{grid-column:auto;display:flex;flex-direction:column;align-items:stretch;text-align:right;gap:0}#al-oils .ao-live{align-items:stretch}#al-oils .ao-cart{width:auto}#al-oils .ao-stock{width:auto}}

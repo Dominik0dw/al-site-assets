@@ -2,7 +2,7 @@
 
 ## Nahrání na GitHub
 
-Rozbalte balíček a jeho obsah nahrajte do kořene repozitáře `al-site-assets`. Zachovejte názvy a vnoření složek. Stávající soubory konfigurátoru Frogum ponechte.
+Projekt je uložený ve složce `STROM-UNI-DILU-NOVY` v repozitáři `al-site-assets`. Aktualizační ZIP obsahuje jen změněné a nové soubory v této složce. Rozbalte jej a složku přetáhněte do `Add file → Upload files` z kořene repozitáře. GitHub aktualizuje shodné cesty. Zachovejte názvy a vnoření složek.
 
 Pokud už máte vlastní `.gitignore`, přidejte do něj jen uvedená pravidla pro cache a Python. Úvodní stránku ani původní README tento balíček nenahrazuje.
 
@@ -13,6 +13,8 @@ Pokud už máte vlastní `.gitignore`, přidejte do něj jen uvedená pravidla p
 | `assets/oleje/live.js` | Načtení ceny a dostupnosti a napojení na nativní košík |
 | `assets/oleje/config.json` | Názvy, filtry, poradci, počet produktů na stránce |
 | `catalog/oleje/catalog.json` | Produkty a jejich parametry s uvedenými zdroji |
+| `catalog/oleje/index.json` | Menší soubor pro první načtení rozhraní, odvozený z hlavní databáze |
+| `catalog/oleje/availability-order.json` | Poslední známé pořadí skladu pro okamžité počáteční řazení; bez cen a množství |
 | `catalog/oleje/overrides.json` | Ručně ověřené opravy; obnovovací skript je nepřepisuje |
 | `catalog/oleje/audit.json` | Pokrytí parametrů a položky k doplnění |
 | `catalog/oleje/ke-kontrole.csv` | Přehled chybějících parametrů pro tabulkový editor |
@@ -22,21 +24,23 @@ Pokud už máte vlastní `.gitignore`, přidejte do něj jen uvedená pravidla p
 
 V GitHub Pages musí být publikovaný kořen tohoto repozitáře. Po nahrání má být dostupný soubor:
 
-https://dominik0dw.github.io/al-site-assets/assets/oleje/oleje.js
+https://dominik0dw.github.io/al-site-assets/STROM-UNI-DILU-NOVY/assets/oleje/oleje.js
 
 Do článku e-shopu vložte obsah `vlozit-do-eshopu.html`. Nepoužívejte iframe: cena, sklad i košík potřebují běžet přímo na doméně e-shopu. Skript má být vložený jednou.
 
 ## Co zákazník uvidí
 
-Vlevo jsou filtry, nahoře rychlý výběr viskozity a odkazy na poradce. Produkty jsou v řádcích s obrázkem, objednacím číslem, parametry, cenou, dostupností a množstvím pro vložení do košíku. Na mobilu lze filtry rozbalit tlačítkem.
+Nahoře jsou kategorie dostupných olejů, vlevo provázané filtry. Kategorie lze upravovat v poli `categories` v `config.json`. Klasifikace vychází z produktových řad; nové řady bez pravidla spadají do „Další oleje“. Rychlý výběr viskozity ukazuje jen dostupné hodnoty. Poradci jsou pod rozbalovacím odkazem. Produkty mají výraznou viskozitu a balení, cenu bez DPH, dostupnost a množství s tlačítky plus/minus. Chybějící nebo nefunkční obrázek nahrazuje ikona. Na mobilu lze filtry rozbalit tlačítkem.
 
-Hledání a filtry pracují nad celou staženou databází, nikoli jen nad zobrazenou stránkou. Více výrobců nebo balení se kombinuje jako „nebo“. Více schválení či specifikací jako „a zároveň“. Výběr se zapisuje do hashe `#oil=…` a lze jej sdílet.
+Hledání a filtry pracují nad celou staženou databází. Více výrobců nebo balení se kombinuje jako „nebo“. Více schválení či specifikací jako „a zároveň“. Hodnoty bez odpovídajícího produktu se nenabízejí; u kombinovaných norem se počítá i s již vybranými hodnotami téže normy. Filtr s jedinou hodnotou společnou všem výsledkům se skryje. Již zvolené hodnoty zůstávají dostupné k odškrtnutí. Výběr včetně kategorie a řazení se zapisuje do hashe `#oil=…` a lze jej sdílet.
 
 ## Ceny, sklad a košík
 
-Produktová databáze na GitHubu obsahuje pouze produktové údaje a parametry. Cena, sklad a údaje pro košík se načítají až z živého detailu produktu na Auto Lenc v přihlášení aktuálního návštěvníka. Současně se načítají nejvýše tři detaily a pouze pro zobrazenou stránku. Paměťová cache platí pět minut; tlačítko „Obnovit sklad“ ji vymaže. Testovací podklad v `tools/tests` obsahuje strukturu nativního HTML s umělou cenou a stavem skladu, nikoli živou nabídku.
+Výchozí řazení je „Skladem první“ nad celým katalogem. První zobrazení využije poslední známý index pořadí a současně požádá nativní službu e-shopu o úplný aktuální přehled skladových nabídek dané větve. Po odpovědi se pořadí aktualizuje. Rozlišují se nabídky označené e-shopem jako skladem, ostatní dostupné nabídky a zbývající produkty. Při selhání služby rozhraní výslovně uvede, že používá poslední přehled.
 
-Cenu, stav skladu a objednání aplikace bere ze stejného dodavatelského bloku. Text „Skladem“ přebírá nativní označení e-shopu; nemusí znamenat konkrétní pobočku. Přesné dodání a další nabídky jsou na detailu.
+Ceny bez DPH, sklad a údaje pro košík se načítají hromadně v aktuální relaci návštěvníka. Nabídky mimo hromadnou odpověď se doplní z detailů právě zobrazených produktů, nejvýše třemi souběžnými požadavky. Aktuální ceny, množství a argumenty košíku zůstávají pouze v paměti stránky. Platnost je pět minut; „Obnovit sklad“ načtení zopakuje. Přepnutí filtrů využije načtené údaje okamžitě. První živé ceny závisejí na rychlosti odpovědi e-shopu; jejich načtení se zobrazuje pomocí stavových zástupných polí.
+
+Cenu, stav skladu a objednání aplikace bere ze stejného dodavatelského bloku; přednost má nabídka označená skladem. Cena pochází přímo z pole bez DPH, není přepočítávaná z hrubé ceny. Text „Skladem“ přebírá nativní označení e-shopu; nemusí znamenat konkrétní pobočku. Přesné dodání a další nabídky jsou na detailu.
 
 Při kliknutí na „Do košíku“ se volá stávající funkce e-shopu `addToBasket`. Argumenty pocházejí z aktuálního detailu a kontroluje se objednací číslo, ID zboží a množství. Nepoužívá se `eval`. Potvrzení vložení a aktualizaci košíku provádí e-shop. Tlačítko samo nevydává předání požadavku za úspěšnou objednávku.
 
@@ -73,4 +77,6 @@ node tools/tests/interface.test.cjs
 
 Obnova znovu projde celou větev a stáhne detaily. Pro pokračování přerušeného běhu použijte `--work-dir` se stejnou složkou cache, jejíž název obsahuje čas zahájení. Bez uvedení složky se vytvoří nová cache a stáhnou čerstvá data. Živý sklad a cena se do databáze neukládají.
 
-Po obnově nahrajte změněnou složku `catalog/oleje` na GitHub. Při změně JavaScriptu zvyšte `?v=1` v HTML bloku. GitHub sám databázi neobnovuje: poskytuje uložené soubory.
+Obnova hlavní databáze automaticky vytvoří také `index.json`. Po ruční úpravě `catalog.json` spusťte `python tools/build_index.py`. Pro obnovu počátečního pořadí skladu použijte `python tools/build_index.py --refresh-stock`; do souboru se uloží jen ID, pořadí a třída dostupnosti, nikoli cena nebo množství. Úpravy v `overrides.json` se aplikují přímo při načtení a nevyžadují obnovu indexu.
+
+Po obnově nahrajte změněnou složku `catalog/oleje` na GitHub. Verze tohoto HTML bloku je `?v=2`; stejnou verzi skript přidává i ke konfiguraci, CSS a pomocnému skriptu, aby se po aktualizaci nenačetla stará kombinace souborů. GitHub sám databázi neobnovuje: poskytuje uložené soubory.

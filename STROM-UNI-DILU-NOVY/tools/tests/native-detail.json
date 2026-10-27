@@ -18,6 +18,45 @@
         {
           "tag": "div",
           "attrs": {
+            "class": "flex-price",
+            "data-flex-retail-price": "2 914,14 ",
+            "data-flex-purchase-price": "2 914,14 "
+          },
+          "text": "\n",
+          "tail": "\n",
+          "children": [
+            {
+              "tag": "span",
+              "attrs": {
+                "class": "flex-value"
+              },
+              "text": "1 000,00",
+              "tail": "\n",
+              "children": []
+            },
+            {
+              "tag": "span",
+              "attrs": {
+                "class": "flex-currency"
+              },
+              "text": "Kč",
+              "tail": "\n",
+              "children": []
+            },
+            {
+              "tag": "span",
+              "attrs": {
+                "class": "flex-with-vat-label"
+              },
+              "text": "s DPH",
+              "tail": "\n",
+              "children": []
+            }
+          ]
+        },
+        {
+          "tag": "div",
+          "attrs": {
             "class": "flex-price-with-vat",
             "data-flex-retail-price": "2 914,14 ",
             "data-flex-purchase-price": "2 914,14 "
