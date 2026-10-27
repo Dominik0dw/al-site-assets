@@ -1,0 +1,189 @@
+{
+  "version": "3",
+  "title": "Univerzální díly",
+  "shop_origin": "https://eshop.auto-lenc.cz",
+  "hidden_roots": [
+    "19223",
+    "20542"
+  ],
+  "groups": [
+    {
+      "id": "oleje",
+      "name": "Oleje a maziva",
+      "icon": "oil",
+      "roots": [
+        "19058",
+        "13114"
+      ],
+      "description": "Motorové, převodové a hydraulické oleje",
+      "image_id": "19058"
+    },
+    {
+      "id": "kapaliny",
+      "name": "Provozní kapaliny",
+      "icon": "drop",
+      "roots": [
+        "19050",
+        "6737"
+      ],
+      "description": "Ostřikovače, chlazení, brzdy a AdBlue",
+      "image_id": "19050"
+    },
+    {
+      "id": "baterie",
+      "name": "Autobaterie",
+      "icon": "battery",
+      "roots": [
+        "19049"
+      ],
+      "description": "Osobní, nákladní i motocyklové baterie",
+      "image_id": "19049"
+    },
+    {
+      "id": "chemie",
+      "name": "Autochemie a aditiva",
+      "icon": "spray",
+      "roots": [
+        "19052",
+        "13638",
+        "13636",
+        "13045"
+      ],
+      "description": "Aditiva, čističe, lepidla a tmely",
+      "image_id": "19052"
+    },
+    {
+      "id": "kosmetika",
+      "name": "Autokosmetika",
+      "icon": "shine",
+      "roots": [
+        "19054",
+        "13041"
+      ],
+      "description": "Mytí, leštění a péče o interiér",
+      "image_id": "19054"
+    },
+    {
+      "id": "lakovani",
+      "name": "Lakování a karoserie",
+      "icon": "paint",
+      "roots": [
+        "19051"
+      ],
+      "description": "Barvy, příprava povrchu a příslušenství",
+      "image_id": "19051"
+    },
+    {
+      "id": "prislusenstvi",
+      "name": "Autopříslušenství",
+      "icon": "car",
+      "roots": [
+        "19055",
+        "16870",
+        "16610",
+        "13939",
+        "18327"
+      ],
+      "description": "Stěrače, výbava, doplňky a cestování",
+      "image_id": "19055"
+    },
+    {
+      "id": "elektrika",
+      "name": "Autoelektrika a osvětlení",
+      "icon": "bulb",
+      "roots": [
+        "18169"
+      ],
+      "description": "Žárovky, elektroinstalace a napájení",
+      "image_id": "18169"
+    },
+    {
+      "id": "dilna",
+      "name": "Nářadí a dílna",
+      "icon": "tools",
+      "roots": [
+        "19505",
+        "20997",
+        "6558",
+        "13917"
+      ],
+      "description": "Nářadí, vybavení a ochranné pomůcky",
+      "image_id": "19505"
+    },
+    {
+      "id": "pneuservis",
+      "name": "Pneuservis",
+      "icon": "wheel",
+      "roots": [
+        "19322"
+      ],
+      "description": "Ventilky, závaží a opravy pneumatik",
+      "image_id": "19322"
+    },
+    {
+      "id": "dily",
+      "name": "Univerzální součástky",
+      "icon": "parts",
+      "roots": [
+        "19056",
+        "6691"
+      ],
+      "description": "Drobné díly a montážní materiál",
+      "image_id": "19056"
+    },
+    {
+      "id": "hobby",
+      "name": "Moto, kemping a zahrada",
+      "icon": "tent",
+      "roots": [
+        "20000",
+        "13865",
+        "18140"
+      ],
+      "description": "Motocykly, outdoor a volný čas",
+      "image_id": "13865"
+    },
+    {
+      "id": "akce",
+      "name": "Akce a novinky",
+      "icon": "tag",
+      "roots": [
+        "19057"
+      ],
+      "description": "Akční nabídka a nové produkty",
+      "secondary": true,
+      "image_id": "19057"
+    }
+  ],
+  "quick_links": [
+    {
+      "name": "Vybrat olej",
+      "route": "n:19058",
+      "icon": "oil"
+    },
+    {
+      "name": "Kapaliny do ostřikovačů",
+      "route": "n:19127",
+      "icon": "drop"
+    },
+    {
+      "name": "Autobaterie",
+      "route": "g:baterie",
+      "icon": "battery"
+    },
+    {
+      "name": "Rohože podle auta",
+      "url": "https://eshop.auto-lenc.cz/cs/clanek/konfiguratory---rohoze-cz",
+      "icon": "car"
+    }
+  ],
+  "name_overrides": {
+    "19088": "Příslušenství k bateriím",
+    "20997": "Další dílenské vybavení",
+    "18327": "Zimní příslušenství",
+    "13114": "Oleje a maziva – další značky"
+  },
+  "page_size": 20,
+  "cache_seconds": 120,
+  "lazy_tree": true
+}

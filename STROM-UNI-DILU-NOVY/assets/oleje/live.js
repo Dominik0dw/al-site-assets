@@ -69,7 +69,8 @@
     const step = Number((spinner?.dataset.flexSpinnerStep || '').replace(',', '.'));
     if (!Number.isFinite(step) || step <= 0) args = undefined;
     if (args) args[18] = false;
-    return { price, currency, stock, onStock, onWay, delivery, args, step: step > 0 ? step : 1, productId: widget?.dataset.flexProductId };
+    const returnInfo = txt(supplier.querySelector('.flex-return-info'));
+    return { price, currency, stock, onStock, onWay, delivery, returnInfo, args, step: step > 0 ? step : 1, productId: widget?.dataset.flexProductId };
   }
   function add(button, row, live, quantity) {
     const amount = Number(String(quantity).replace(',', '.'));

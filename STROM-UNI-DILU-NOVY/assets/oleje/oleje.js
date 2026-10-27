@@ -6,6 +6,7 @@
   const assetURL = path => { const url = new URL(path, base); url.searchParams.set('v', version); return url; };
   const mount = document.getElementById('al-oils-mount');
   if (!mount || mount.dataset.loaded) return;
+  const hosted = mount.dataset.hostHash === 'uni';
   mount.dataset.loaded = 'true';
   const css = document.createElement('link'); css.rel = 'stylesheet'; css.href = assetURL('oleje.css'); document.head.append(css);
   const adapter = document.createElement('script'); adapter.src = assetURL('live.js');
@@ -64,9 +65,9 @@
     const collator = new Intl.Collator('cs', { numeric: true, sensitivity: 'base' });
     function restore() {
       state.selected = {}; state.q = ''; state.page = 1; state.sort = 'stock'; state.category = '';
-      if (!location.hash.startsWith('#oil=')) return;
+      if (!hosted && !location.hash.startsWith('#oil=')) return;
       try {
-        const hash = new URLSearchParams(decodeURIComponent(location.hash.slice(5)));
+        const hash = new URLSearchParams(hosted ? new URLSearchParams(location.hash.slice(1)).get('oil') || '' : decodeURIComponent(location.hash.slice(5)));
         state.q = hash.get('q') || ''; state.page = Math.max(1, Math.floor(Number(hash.get('page'))) || 1);
         state.sort = ['stock', 'name', 'code'].includes(hash.get('sort')) ? hash.get('sort') : 'stock'; state.selected = {};
         state.category = categories.some(c => c.id === hash.get('category')) ? hash.get('category') : '';
@@ -74,9 +75,12 @@
       } catch (_) {}
     }
     function writeHash() {
+      if (hosted && (mount.hidden || new URLSearchParams(location.hash.slice(1)).get('uni') !== 'n:19058')) return;
       const h = new URLSearchParams(); if (state.q) h.set('q', state.q); if (state.page > 1) h.set('page', state.page); if (state.sort !== 'stock') h.set('sort', state.sort); if (state.category) h.set('category', state.category);
       Object.entries(state.selected).forEach(([key, set]) => set.forEach(v => h.append(key, v)));
-      const hash = h.size ? '#oil=' + encodeURIComponent(h.toString()) : '';
+      const host = hosted ? new URLSearchParams(location.hash.slice(1)) : null;
+      if (host) { if (h.size) host.set('oil', h.toString()); else host.delete('oil'); }
+      const hash = host ? '#' + host.toString() : h.size ? '#oil=' + encodeURIComponent(h.toString()) : '';
       history.replaceState(null, '', location.pathname + location.search + hash);
     }
     function matches(p, except) {
@@ -108,7 +112,10 @@
     $('.ao-sort').onchange = event => { state.sort = event.target.value; state.page = 1; render(); };
     $('.ao-refresh').onclick = () => { if (bulkPromise) return; liveCache.clear(); stockCheckedAt = 0; syncStock(); render(); };
     $('.ao-share').onclick = async event => { try { await navigator.clipboard.writeText(location.href); event.target.textContent = 'Odkaz zkopírován'; setTimeout(() => { event.target.textContent = 'Sdílet výběr'; }, 1800); } catch (_) { event.target.textContent = 'Zkopírujte adresu stránky'; } };
-    window.addEventListener('hashchange', () => { restore(); $('.ao-search').value = state.q; $('.ao-sort').value = state.sort; render(); });
+    const restoreView = () => { if (hosted && mount.hidden) return; restore(); $('.ao-search').value = state.q; $('.ao-sort').value = state.sort; render(); };
+    if (!hosted) window.addEventListener('hashchange', restoreView);
+    mount.addEventListener('al:resume', restoreView);
+    mount.addEventListener('al:pause', () => { clearTimeout(searchTimer); controller?.abort(); });
     function toggle(key, value) { const set = state.selected[key] ||= new Set(); if (!set.has(value) && !(facetCounts.get(key)?.get(value) > 0)) return; set.has(value) ? set.delete(value) : set.add(value); if (!set.size) delete state.selected[key]; state.page = 1; render(); }
     function sortedProducts() {
       return products.filter(p => matches(p)).sort((a, b) => {

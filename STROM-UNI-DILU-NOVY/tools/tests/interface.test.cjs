@@ -13,7 +13,7 @@ async function preview(hash = '', failure = false) {
     return nodes.get(selector);
   };
   const app = { innerHTML: '', querySelector: element, querySelectorAll: () => [], classList: { toggle: () => true } };
-  const mount = { dataset: {}, innerHTML: '', firstElementChild: app };
+  const mount = { dataset: {}, innerHTML: '', firstElementChild: app, addEventListener() {} };
   const document = {
     currentScript: { src: 'https://example.github.io/assets/oleje/oleje.js' },
     getElementById: id => id === 'al-oils-mount' ? mount : null,
