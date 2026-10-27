@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "products": {
+    "SEM_PATRI_ID_PRODUKTU": {
+      "fields": {
+        "sae": {
+          "value": ["5W-30"],
+          "source_url": "https://www.totalenergies.cz/",
+          "checked_at": "2026-10-27",
+          "reason": "Nahraďte přímým odkazem na odpovídající technický list a vysvětlením opravy."
+        }
+      }
+    }
+  }
+}

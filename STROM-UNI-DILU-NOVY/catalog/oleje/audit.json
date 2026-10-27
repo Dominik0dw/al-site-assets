@@ -1,0 +1,1378 @@
+{
+  "generated_at": "2026-10-27T16:52:08.389454+00:00",
+  "expected_count": 812,
+  "downloaded_count": 812,
+  "coverage": {
+    "sae": 783,
+    "volume_l": 790,
+    "acea": 295,
+    "api": 354,
+    "ilsac": 37,
+    "approvals": 340,
+    "recommendations": 325,
+    "meets_requirements": 76,
+    "container": 420,
+    "oil_type": 115,
+    "other_standards": 390
+  },
+  "details_failed": [],
+  "needs_review": [
+    {
+      "id": "5768118",
+      "brand": "TOTAL",
+      "code": "197856",
+      "name": "TOTAL CLASSIC 10W40 1L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "2941156",
+      "brand": "TOTAL",
+      "code": "156358",
+      "name": "TOTAL CLASSIC 15W40 1L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "12981132",
+      "brand": "TOTAL",
+      "code": "213707",
+      "name": "TOTAL CLASSIC 5 15W40 60L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "12981145",
+      "brand": "TOTAL",
+      "code": "214106",
+      "name": "TOTAL CLASSIC 9 C1 5W30 208L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "13444597",
+      "brand": "TOTAL",
+      "code": "213778",
+      "name": "TOTAL CLASSIC 9 C2 5W30 2L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "13582696",
+      "brand": "TOTAL",
+      "code": "201511",
+      "name": "TOTAL CLASSIC C1 5W30 5L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "13383961",
+      "brand": "TOTAL",
+      "code": "217843",
+      "name": "TOTAL DYNATRANS AC 0W20 1L IBC",
+      "status": "needs_research",
+      "missing_core_fields": [
+        "volume_l"
+      ],
+      "fields_from_title": [
+        "sae"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "11833961",
+      "brand": "TOTAL",
+      "code": "199239",
+      "name": "TOTAL DYNATRANS AC 0W20 208L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "14176967",
+      "brand": "TOTAL",
+      "code": "225904",
+      "name": "TOTAL DYNATRANS ACX 0W20 1000L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "14176966",
+      "brand": "TOTAL",
+      "code": "209648",
+      "name": "TOTAL DYNATRANS ACX 0W20 208L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "15662292",
+      "brand": "TOTAL",
+      "code": "0W30 9000 ENER 4",
+      "name": "TOTAL ENERGY 9000 0W30 4L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "13582705",
+      "brand": "TOTAL",
+      "code": "110584",
+      "name": "TOTAL FLUIDE AT 42 60L",
+      "status": "catalog_parameters",
+      "missing_core_fields": [
+        "sae"
+      ],
+      "fields_from_title": [],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "10932603",
+      "brand": "TOTAL",
+      "code": "TO-XLDFE/1",
+      "name": "TOTAL FLUIDE XLD FE 1L",
+      "status": "catalog_parameters",
+      "missing_core_fields": [
+        "sae"
+      ],
+      "fields_from_title": [],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "11833997",
+      "brand": "TOTAL",
+      "code": "120790",
+      "name": "TOTAL FLUIDEMATIC SYN 208L",
+      "status": "catalog_parameters",
+      "missing_core_fields": [
+        "sae"
+      ],
+      "fields_from_title": [],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "6940521",
+      "brand": "TOTAL",
+      "code": "195437",
+      "name": "TOTAL FLUIDMATIC 7S 60L",
+      "status": "catalog_parameters",
+      "missing_core_fields": [
+        "sae"
+      ],
+      "fields_from_title": [],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "12981175",
+      "brand": "TOTAL",
+      "code": "213754",
+      "name": "TOTAL FLUIDMATIC AT 42 1L",
+      "status": "catalog_parameters",
+      "missing_core_fields": [
+        "sae"
+      ],
+      "fields_from_title": [],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "12981174",
+      "brand": "TOTAL",
+      "code": "213654",
+      "name": "TOTAL FLUIDMATIC AT 42 208L",
+      "status": "catalog_parameters",
+      "missing_core_fields": [
+        "sae"
+      ],
+      "fields_from_title": [],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "15791588",
+      "brand": "TOTAL",
+      "code": "228910",
+      "name": "TOTAL FLUIDMATIC AT 42 20L",
+      "status": "catalog_parameters",
+      "missing_core_fields": [
+        "sae"
+      ],
+      "fields_from_title": [],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "12981173",
+      "brand": "TOTAL",
+      "code": "213637",
+      "name": "TOTAL FLUIDMATIC AT 42 60L",
+      "status": "catalog_parameters",
+      "missing_core_fields": [
+        "sae"
+      ],
+      "fields_from_title": [],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "12981179",
+      "brand": "TOTAL",
+      "code": "213653",
+      "name": "TOTAL FLUIDMATIC ATX 1L",
+      "status": "catalog_parameters",
+      "missing_core_fields": [
+        "sae"
+      ],
+      "fields_from_title": [
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "12981182",
+      "brand": "TOTAL",
+      "code": "213650",
+      "name": "TOTAL FLUIDMATIC CC 208L",
+      "status": "catalog_parameters",
+      "missing_core_fields": [
+        "sae"
+      ],
+      "fields_from_title": [],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "12981181",
+      "brand": "TOTAL",
+      "code": "213641",
+      "name": "TOTAL FLUIDMATIC CC 20L",
+      "status": "catalog_parameters",
+      "missing_core_fields": [
+        "sae"
+      ],
+      "fields_from_title": [],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "12981193",
+      "brand": "TOTAL",
+      "code": "214027",
+      "name": "TOTAL FLUIDMATIC CVT MV 1L",
+      "status": "catalog_parameters",
+      "missing_core_fields": [
+        "sae"
+      ],
+      "fields_from_title": [],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "11833998",
+      "brand": "TOTAL",
+      "code": "198858",
+      "name": "TOTAL FLUIDMATIC CVT MV 60L",
+      "status": "catalog_parameters",
+      "missing_core_fields": [
+        "sae"
+      ],
+      "fields_from_title": [],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "12981188",
+      "brand": "TOTAL",
+      "code": "213642",
+      "name": "TOTAL FLUIDMATIC D2 208L",
+      "status": "catalog_parameters",
+      "missing_core_fields": [
+        "sae"
+      ],
+      "fields_from_title": [],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "12981187",
+      "brand": "TOTAL",
+      "code": "213774",
+      "name": "TOTAL FLUIDMATIC D3 1L",
+      "status": "catalog_parameters",
+      "missing_core_fields": [
+        "sae"
+      ],
+      "fields_from_title": [
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "14176992",
+      "brand": "TOTAL",
+      "code": "225525",
+      "name": "TOTAL FLUIDMATIC DCT-1 1L",
+      "status": "catalog_parameters",
+      "missing_core_fields": [
+        "sae"
+      ],
+      "fields_from_title": [],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "16947751",
+      "brand": "TOTAL",
+      "code": "230779",
+      "name": "TOTAL FLUIDMATIC DCT-1 20L",
+      "status": "catalog_parameters",
+      "missing_core_fields": [
+        "sae"
+      ],
+      "fields_from_title": [],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "13809930",
+      "brand": "TOTAL",
+      "code": "213635",
+      "name": "TOTAL FLUIDMATIC F TYPE 208L",
+      "status": "catalog_parameters",
+      "missing_core_fields": [
+        "sae"
+      ],
+      "fields_from_title": [],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "13809931",
+      "brand": "TOTAL",
+      "code": "213636",
+      "name": "TOTAL FLUIDMATIC F TYPE 20L",
+      "status": "catalog_parameters",
+      "missing_core_fields": [
+        "sae"
+      ],
+      "fields_from_title": [],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "19348945",
+      "brand": "TOTAL",
+      "code": "232820",
+      "name": "TOTAL FLUIDMATIC HD XLD 208L",
+      "status": "catalog_parameters",
+      "missing_core_fields": [
+        "sae"
+      ],
+      "fields_from_title": [],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "19348944",
+      "brand": "TOTAL",
+      "code": "232809",
+      "name": "TOTAL FLUIDMATIC HD XLD 20L",
+      "status": "catalog_parameters",
+      "missing_core_fields": [
+        "sae"
+      ],
+      "fields_from_title": [],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "13383972",
+      "brand": "TOTAL",
+      "code": "217710",
+      "name": "TOTAL FLUIDMATIC SYN T295 208L",
+      "status": "catalog_parameters",
+      "missing_core_fields": [
+        "sae"
+      ],
+      "fields_from_title": [],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "13383973",
+      "brand": "TOTAL",
+      "code": "217711",
+      "name": "TOTAL FLUIDMATIC SYN T295 60L",
+      "status": "catalog_parameters",
+      "missing_core_fields": [
+        "sae"
+      ],
+      "fields_from_title": [],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "14176994",
+      "brand": "TOTAL",
+      "code": "227279",
+      "name": "TOTAL FLUIDMATIC SYN T668 208L",
+      "status": "catalog_parameters",
+      "missing_core_fields": [
+        "sae"
+      ],
+      "fields_from_title": [],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "14176993",
+      "brand": "TOTAL",
+      "code": "227278",
+      "name": "TOTAL FLUIDMATIC SYN T668 20L",
+      "status": "catalog_parameters",
+      "missing_core_fields": [
+        "sae"
+      ],
+      "fields_from_title": [],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "13444592",
+      "brand": "TOTAL",
+      "code": "214019",
+      "name": "TOTAL HI-PERF GEAR OIL 80W90 1L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "13383998",
+      "brand": "TOTAL",
+      "code": "199190",
+      "name": "TOTAL HI-PERF GEAR OIL 80W90 208L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "13384020",
+      "brand": "TOTAL",
+      "code": "175315",
+      "name": "TOTAL LONG LIFE A5 5W30 208L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "11834009",
+      "brand": "TOTAL",
+      "code": "202879",
+      "name": "TOTAL MULTAGRI MS 15W40 1L IBC",
+      "status": "needs_research",
+      "missing_core_fields": [
+        "volume_l"
+      ],
+      "fields_from_title": [
+        "sae"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "4424319",
+      "brand": "TOTAL",
+      "code": "197559",
+      "name": "TOTAL MULTAGRI PRO TEC 10W40 1L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "13384023",
+      "brand": "TOTAL",
+      "code": "151286",
+      "name": "TOTAL OPTIPRO 5W40 208L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "13384024",
+      "brand": "TOTAL",
+      "code": "157317",
+      "name": "TOTAL OPTIPRO 5W40 2L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "13384026",
+      "brand": "TOTAL",
+      "code": "172623",
+      "name": "TOTAL OPTIPRO C2 5W30 208L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "13384025",
+      "brand": "TOTAL",
+      "code": "172622",
+      "name": "TOTAL OPTIPRO C2 5W30 2L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "12981219",
+      "brand": "TOTAL",
+      "code": "213735",
+      "name": "TOTAL PROSYLVA 4T SYN 10W40 2L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "11834038",
+      "brand": "TOTAL",
+      "code": "174239",
+      "name": "TOTAL QUARTZ 9000 5W40 1L IBC",
+      "status": "needs_research",
+      "missing_core_fields": [
+        "volume_l"
+      ],
+      "fields_from_title": [
+        "sae"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "12538928",
+      "brand": "TOTAL",
+      "code": "211336",
+      "name": "TOTAL QUARTZ 9000 FUT.FGC 5W30 1L IBC",
+      "status": "needs_research",
+      "missing_core_fields": [
+        "volume_l"
+      ],
+      "fields_from_title": [
+        "sae"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "11834042",
+      "brand": "TOTAL",
+      "code": "206191",
+      "name": "TOTAL QUARTZ 9000 V-DRIVE 0W20 1L IBC",
+      "status": "needs_research",
+      "missing_core_fields": [
+        "volume_l"
+      ],
+      "fields_from_title": [
+        "sae"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "19348952",
+      "brand": "TOTAL",
+      "code": "234838",
+      "name": "TOTAL QUARTZ EV-BATTERY CS 208L",
+      "status": "catalog_parameters",
+      "missing_core_fields": [
+        "sae"
+      ],
+      "fields_from_title": [],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "18221650",
+      "brand": "TOTAL",
+      "code": "230790",
+      "name": "TOTAL QUARTZ EV-DRIVE MP 3.1 1L",
+      "status": "catalog_parameters",
+      "missing_core_fields": [
+        "sae"
+      ],
+      "fields_from_title": [],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "16059816",
+      "brand": "TOTAL",
+      "code": "226952",
+      "name": "TOTAL QUARTZ EV-DRIVE R 3.1 1L",
+      "status": "catalog_parameters",
+      "missing_core_fields": [
+        "sae"
+      ],
+      "fields_from_title": [],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "13384037",
+      "brand": "TOTAL",
+      "code": "213100",
+      "name": "TOTAL QUARTZ INEO C3 5W40 1L IBC",
+      "status": "catalog_parameters",
+      "missing_core_fields": [
+        "volume_l"
+      ],
+      "fields_from_title": [],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "14468911",
+      "brand": "TOTAL",
+      "code": "0W20 INEO DYN 1",
+      "name": "TOTAL QUARTZ INEO DYNAMICS 0W20 1L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "11834047",
+      "brand": "TOTAL",
+      "code": "157590",
+      "name": "TOTAL QUARTZ INEO ECS 5W30 1L IBC",
+      "status": "catalog_parameters",
+      "missing_core_fields": [
+        "volume_l"
+      ],
+      "fields_from_title": [],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "15791610",
+      "brand": "TOTAL",
+      "code": "228167",
+      "name": "TOTAL QUARTZ INEO EFFICEN 0W30 1000L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "11834048",
+      "brand": "TOTAL",
+      "code": "196294",
+      "name": "TOTAL QUARTZ INEO EFFICEN 0W30 1L IBC",
+      "status": "needs_research",
+      "missing_core_fields": [
+        "volume_l"
+      ],
+      "fields_from_title": [
+        "sae"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "8221261",
+      "brand": "TOTAL",
+      "code": "193708",
+      "name": "TOTAL QUARTZ INEO L LIFE 5W30 1L IBC",
+      "status": "catalog_parameters",
+      "missing_core_fields": [
+        "volume_l"
+      ],
+      "fields_from_title": [],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "4424378",
+      "brand": "TOTAL",
+      "code": "174779",
+      "name": "TOTAL QUARTZ INEO MC3 5W40 208L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "2941204",
+      "brand": "TOTAL",
+      "code": "174778",
+      "name": "TOTAL QUARTZ INEO MC3 5W40 60L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "13384045",
+      "brand": "TOTAL",
+      "code": "213472",
+      "name": "TOTAL QUARTZ INEO MDC 5W30 1L IBC",
+      "status": "catalog_parameters",
+      "missing_core_fields": [
+        "volume_l"
+      ],
+      "fields_from_title": [],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "13809922",
+      "brand": "TOTAL",
+      "code": "225940",
+      "name": "TOTAL QUARTZ INEO X.EC5 0W20 1000L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "13444601",
+      "brand": "TOTAL",
+      "code": "214196",
+      "name": "TOTAL QUARTZ INEO X.VDR.0W20FR 1000L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "7870380",
+      "brand": "TOTAL",
+      "code": "164604",
+      "name": "TOTAL RUBIA CITY & ROAD 208L",
+      "status": "catalog_parameters",
+      "missing_core_fields": [
+        "sae"
+      ],
+      "fields_from_title": [],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "11834055",
+      "brand": "TOTAL",
+      "code": "157465",
+      "name": "TOTAL RUBIA GAS 5M 15W40 1L IBC",
+      "status": "catalog_parameters",
+      "missing_core_fields": [
+        "volume_l"
+      ],
+      "fields_from_title": [],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "11834057",
+      "brand": "TOTAL",
+      "code": "207894",
+      "name": "TOTAL RUBIA OPT.1100 15W40 1L IBC",
+      "status": "catalog_parameters",
+      "missing_core_fields": [
+        "volume_l"
+      ],
+      "fields_from_title": [],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "11834060",
+      "brand": "TOTAL",
+      "code": "207860",
+      "name": "TOTAL RUBIA OPT.1100 FE 10W30 1L IBC",
+      "status": "catalog_parameters",
+      "missing_core_fields": [
+        "volume_l"
+      ],
+      "fields_from_title": [],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "13384067",
+      "brand": "TOTAL",
+      "code": "209454",
+      "name": "TOTAL RUBIA SX 10W 1L IBC",
+      "status": "catalog_parameters",
+      "missing_core_fields": [
+        "volume_l"
+      ],
+      "fields_from_title": [],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "2941137",
+      "brand": "TOTAL",
+      "code": "301274",
+      "name": "TOTAL RUBIA TIR 7400 15W40",
+      "status": "catalog_parameters",
+      "missing_core_fields": [
+        "volume_l"
+      ],
+      "fields_from_title": [],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "11544318",
+      "brand": "TOTAL",
+      "code": "134333",
+      "name": "TOTAL RUBIA TIR 7400 15W40 1L IBC",
+      "status": "catalog_parameters",
+      "missing_core_fields": [
+        "volume_l"
+      ],
+      "fields_from_title": [],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "10932590",
+      "brand": "TOTAL",
+      "code": "TO-RUTIR8600/1",
+      "name": "TOTAL RUBIA TIR 8600 10W40 1L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "11544321",
+      "brand": "TOTAL",
+      "code": "156820",
+      "name": "TOTAL RUBIA TIR 8600 10W40 1L IBC",
+      "status": "catalog_parameters",
+      "missing_core_fields": [
+        "volume_l"
+      ],
+      "fields_from_title": [],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "11834068",
+      "brand": "TOTAL",
+      "code": "168817",
+      "name": "TOTAL RUBIA WORKS 1000 15W40 1L IBC",
+      "status": "catalog_parameters",
+      "missing_core_fields": [
+        "volume_l"
+      ],
+      "fields_from_title": [],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "12538963",
+      "brand": "TOTAL",
+      "code": "213991",
+      "name": "TOTAL RUBIA WORKS 4000 10W40 1L IBC",
+      "status": "catalog_parameters",
+      "missing_core_fields": [
+        "volume_l"
+      ],
+      "fields_from_title": [],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "10932593",
+      "brand": "TOTAL",
+      "code": "TO-RUTIR8900/25",
+      "name": "TOTAL Rubia Tir 8900 10W40 25L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "12223757",
+      "brand": "TOTAL",
+      "code": "208440",
+      "name": "TOTAL SPORTI 9 5W40 5L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "11834076",
+      "brand": "TOTAL",
+      "code": "148702",
+      "name": "TOTAL TP MAX 10W40 1L IBC",
+      "status": "needs_research",
+      "missing_core_fields": [
+        "volume_l"
+      ],
+      "fields_from_title": [
+        "sae"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "4424424",
+      "brand": "TOTAL",
+      "code": "148711",
+      "name": "TOTAL TP MAX 10W40 20L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "11834078",
+      "brand": "TOTAL",
+      "code": "175455",
+      "name": "TOTAL TP STAR MAX HT 15W40 1L IBC",
+      "status": "needs_research",
+      "missing_core_fields": [
+        "volume_l"
+      ],
+      "fields_from_title": [
+        "sae"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "10182299",
+      "brand": "TOTAL",
+      "code": "167522",
+      "name": "TOTAL TP STAR MAX HT 15W40 208L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "11834083",
+      "brand": "TOTAL",
+      "code": "156661",
+      "name": "TOTAL TRACTAGRI HDX FE 15W30 208L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "11834084",
+      "brand": "TOTAL",
+      "code": "156662",
+      "name": "TOTAL TRACTAGRI HDX FE 15W30 20L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "12981342",
+      "brand": "TOTAL",
+      "code": "213829",
+      "name": "TOTAL TRACTAGRI HDX FE 15W30 5L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "11834086",
+      "brand": "TOTAL",
+      "code": "157528",
+      "name": "TOTAL TRACTAGRI HDX FE 15W30 60L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "4424429",
+      "brand": "TOTAL",
+      "code": "153672",
+      "name": "TOTAL TRACTAGRI HDX SYN 10W40 208L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "4424430",
+      "brand": "TOTAL",
+      "code": "153673",
+      "name": "TOTAL TRACTAGRI HDX SYN 10W40 20L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "13384083",
+      "brand": "TOTAL",
+      "code": "164548",
+      "name": "TOTAL TRACTAGRI HDX SYN 10W40 5L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "4424431",
+      "brand": "TOTAL",
+      "code": "181510",
+      "name": "TOTAL TRACTAGRI HDX SYN 10W40 60L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "12538970",
+      "brand": "TOTAL",
+      "code": "210627",
+      "name": "TOTAL TRACTAGRI HDZ 15W40 60L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "11834089",
+      "brand": "TOTAL",
+      "code": "205881",
+      "name": "TOTAL TRACTAGRI T4R 10W40 208L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "11834090",
+      "brand": "TOTAL",
+      "code": "205819",
+      "name": "TOTAL TRACTAGRI T4R 10W40 20L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "11834091",
+      "brand": "TOTAL",
+      "code": "205880",
+      "name": "TOTAL TRACTAGRI T4R 10W40 60L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "11834092",
+      "brand": "TOTAL",
+      "code": "205818",
+      "name": "TOTAL TRACTAGRI T4R FE 5W30 208L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "11834093",
+      "brand": "TOTAL",
+      "code": "205816",
+      "name": "TOTAL TRACTAGRI T4R FE 5W30 20L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "11834094",
+      "brand": "TOTAL",
+      "code": "205817",
+      "name": "TOTAL TRACTAGRI T4R FE 5W30 60L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "10932571",
+      "brand": "TOTAL",
+      "code": "TO-QINEO5W30/5",
+      "name": "Total Quartz INEO 504/ 507 5W30 5L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "10932572",
+      "brand": "TOTAL",
+      "code": "TO-QINEO5W30/5A",
+      "name": "Total Quartz INEO 504/ 507 5W30 5L + 1L",
+      "status": "needs_research",
+      "missing_core_fields": [
+        "volume_l"
+      ],
+      "fields_from_title": [
+        "sae"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "10932583",
+      "brand": "TOTAL",
+      "code": "TO-QINEOMC35W40/5",
+      "name": "Total Quartz INEO MC3 5W40 5L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    },
+    {
+      "id": "10932589",
+      "brand": "TOTAL",
+      "code": "TO-RUPOLY10W40/5",
+      "name": "Total Rubia Polytrafic 10W40 5L",
+      "status": "needs_research",
+      "missing_core_fields": [],
+      "fields_from_title": [
+        "sae",
+        "volume_l"
+      ],
+      "manufacturer_verified": false,
+      "error": null
+    }
+  ]
+}

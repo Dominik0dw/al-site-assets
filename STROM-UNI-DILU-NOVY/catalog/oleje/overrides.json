@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "products": {
+    "13585657": {
+      "fields": {
+        "brand": {
+          "value": [
+            "TOTAL"
+          ],
+          "source_url": "https://eshop.auto-lenc.cz/cs/katalog/univerzalni-dily/oleje-a-maziva/total-tractagri-hdx-15w40-5l/total-tractagri-hdx-15w40-5l/213728/19058/13585657",
+          "checked_at": "2026-10-27",
+          "reason": "V poli výrobce byl celý název produktu. Název a detail označují značku TOTAL."
+        }
+      }
+    },
+    "13585645": {
+      "fields": {
+        "brand": {
+          "value": [
+            "TOTAL"
+          ],
+          "source_url": "https://eshop.auto-lenc.cz/cs/katalog/univerzalni-dily/oleje-a-maziva/total-quartz-ineo-did-5w30-1l/total-quartz-ineo-did-5w30-1l/213808/19058/13585645",
+          "checked_at": "2026-10-27",
+          "reason": "V poli výrobce byl celý název produktu. Název a detail označují značku TOTAL."
+        }
+      }
+    },
+    "13585647": {
+      "fields": {
+        "brand": {
+          "value": [
+            "TOTAL"
+          ],
+          "source_url": "https://eshop.auto-lenc.cz/cs/katalog/univerzalni-dily/oleje-a-maziva/total-quartz-ineo-htc-5w30-1l/total-quartz-ineo-htc-5w30-1l/214316/19058/13585647",
+          "checked_at": "2026-10-27",
+          "reason": "V poli výrobce byl celý název produktu. Název a detail označují značku TOTAL."
+        }
+      }
+    },
+    "13585646": {
+      "fields": {
+        "brand": {
+          "value": [
+            "TOTAL"
+          ],
+          "source_url": "https://eshop.auto-lenc.cz/cs/katalog/univerzalni-dily/oleje-a-maziva/total-quartz-ineo-htc-5w30-5l/total-quartz-ineo-htc-5w30-5l/214315/19058/13585646",
+          "checked_at": "2026-10-27",
+          "reason": "V poli výrobce byl celý název produktu. Název a detail označují značku TOTAL."
+        }
+      }
+    }
+  }
+}

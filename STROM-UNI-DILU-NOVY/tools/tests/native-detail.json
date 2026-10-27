@@ -1,0 +1,152 @@
+{
+  "tag": "div",
+  "attrs": {
+    "id": "ProductItem_2941184",
+    "class": "flex-general"
+  },
+  "text": "",
+  "tail": "",
+  "children": [
+    {
+      "tag": "div",
+      "attrs": {
+        "class": "flex-delivery-time-item"
+      },
+      "text": "",
+      "tail": "",
+      "children": [
+        {
+          "tag": "div",
+          "attrs": {
+            "class": "flex-price-with-vat",
+            "data-flex-retail-price": "2 914,14 ",
+            "data-flex-purchase-price": "2 914,14 "
+          },
+          "text": "\n",
+          "tail": "\n",
+          "children": [
+            {
+              "tag": "span",
+              "attrs": {
+                "class": "flex-value"
+              },
+              "text": "1 234,50",
+              "tail": "\n",
+              "children": []
+            },
+            {
+              "tag": "span",
+              "attrs": {
+                "class": "flex-currency"
+              },
+              "text": "Kč",
+              "tail": "\n",
+              "children": []
+            },
+            {
+              "tag": "span",
+              "attrs": {
+                "class": "flex-with-vat-label"
+              },
+              "text": "s DPH",
+              "tail": "\n",
+              "children": []
+            }
+          ]
+        },
+        {
+          "tag": "div",
+          "attrs": {
+            "class": "flex-total-amount flex-on-stock"
+          },
+          "text": "7 ks",
+          "tail": "",
+          "children": []
+        },
+        {
+          "tag": "div",
+          "attrs": {
+            "class": "flex-add-to-basket",
+            "data-supplier": "1704 logo-sm",
+            "data-flex-group-id": "2941184",
+            "data-flex-product-id": "4424043"
+          },
+          "text": "\n",
+          "tail": "\n",
+          "children": [
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "flex-basket-spinner",
+                "data-flex-product-id": "4424043",
+                "data-flex-spinner-step": "1",
+                "data-flex-spinner-invalid-amount-text": "Bylo zadáno neplatné množství zboží! Množství musí být násobkem {0}."
+              },
+              "text": "\n",
+              "tail": "\n\n",
+              "children": [
+                {
+                  "tag": "input",
+                  "attrs": {
+                    "id": "ProductAddToBasketHtmlBuilder_Amount_2941184_4424043",
+                    "name": "ProductAddToBasketHtmlBuilder$Amount_2941184_4424043",
+                    "type": "text",
+                    "value": "1",
+                    "onclick": "return false;"
+                  },
+                  "text": "",
+                  "tail": "\n",
+                  "children": []
+                },
+                {
+                  "tag": "div",
+                  "attrs": {
+                    "class": "flex-spinner",
+                    "data-flex-spinner-input": "ProductAddToBasketHtmlBuilder_Amount_2941184_4424043",
+                    "data-flex-mobile-hide": "true"
+                  },
+                  "text": "\n",
+                  "tail": "\n",
+                  "children": [
+                    {
+                      "tag": "div",
+                      "attrs": {
+                        "class": "flex-spinner-increment-button"
+                      },
+                      "text": "",
+                      "tail": "\n",
+                      "children": []
+                    },
+                    {
+                      "tag": "div",
+                      "attrs": {
+                        "class": "flex-spinner-decrement-button"
+                      },
+                      "text": "",
+                      "tail": "\n",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "tag": "input",
+                  "attrs": {
+                    "id": "ProductAddToBasketHtmlBuilder_AddToBasketButton_2941184_4424043",
+                    "name": "ProductAddToBasketHtmlBuilder$AddToBasketButton",
+                    "type": "button",
+                    "value": "",
+                    "class": "flex-add-to-basket-button",
+                    "onclick": "var amountValue = $(this).parent().find('#ProductAddToBasketHtmlBuilder_Amount_2941184_4424043').val();  addToBasket(this, '#ProductItem_2941184', '113430', 2941184, 4424043, '4424043;SORT_0_1_0_0_000001553,791_000000004424043', amountValue, 0, '', 'Oleje a maziva ', 'universal-parts', false, false, false, 'product-detail', 1, 'Zítra (Osobní odběr od 8:00 do 18:00)', 0, true, [1, ]); return false;"
+                  },
+                  "text": "",
+                  "tail": "\n",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

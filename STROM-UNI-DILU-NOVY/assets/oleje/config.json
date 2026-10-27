@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "title": "Oleje a maziva",
+  "subtitle": "Vyberte olej podle viskozity, balení a požadovaných specifikací.",
+  "shop_origin": "https://eshop.auto-lenc.cz",
+  "page_size": 12,
+  "live_prices": true,
+  "quick_viscosities": ["0W-16", "0W-20", "0W-30", "0W-40", "5W-20", "5W-30", "5W-40", "10W-30", "10W-40", "15W-40"],
+  "filters": [
+    {"key":"brand","label":"Výrobce","mode":"any","open":true},
+    {"key":"volume_l","label":"Balení","mode":"any","open":true},
+    {"key":"sae","label":"Viskozita SAE","mode":"any","open":false},
+    {"key":"acea","label":"Specifikace ACEA","mode":"all","open":false},
+    {"key":"api","label":"Specifikace API","mode":"all","open":false},
+    {"key":"ilsac","label":"Specifikace ILSAC","mode":"all","open":false},
+    {"key":"approvals","label":"Schválení dle katalogu","mode":"all","open":false},
+    {"key":"recommendations","label":"Doporučení výrobce oleje","mode":"all","open":false},
+    {"key":"container","label":"Typ obalu","mode":"any","open":false},
+    {"key":"oil_type","label":"Druh oleje","mode":"any","open":false}
+  ],
+  "advisors": [
+    {"name":"TotalEnergies","url":"https://eshop.auto-lenc.cz/cs/clanek/mazaci-plan---totalenergies-cz"},
+    {"name":"MOL","url":"https://molcesko.cz/cz/maziva-autochemikalie/poradce-pri-vyberu-motorovych-oleju-a-maziv"},
+    {"name":"Shell","url":"https://www.shell.cz/paliva-oleje-a-maziva/lubematch.html"},
+    {"name":"Castrol","url":"https://www.castrol.com/cs_cz/czech_republic/home/product-finder.html"},
+    {"name":"Mobil","url":"https://www.mobil.com/en/lubricants/what-to-buy/find-the-right-motor-oil"},
+    {"name":"LIQUI MOLY","url":"https://www.liqui-moly.cz/pruvodce-oleji/#oww:/api/v1/oww/1040/CZE/CES/1/"},
+    {"name":"Motul","url":"https://www.motul.com/cs-CZ/lubricants"}
+  ]
+}
